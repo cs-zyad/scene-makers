@@ -181,10 +181,18 @@ p.lead{font-size:clamp(17px,1.5vw,20px);max-width:62ch;color:var(--muted)}
 
 /* ---------- العملاء ---------- */
 .clients{padding:0 0 clamp(70px,8vw,120px)}
-.clients .row{display:flex;flex-wrap:wrap;gap:12px 40px;align-items:center;border-block:1px solid var(--line);padding:30px 0}
-.clients .row span{font-size:20px;font-weight:800;color:rgba(255,255,255,.5);transition:color .3s}
-.clients .row span:hover{color:#fff}
-.clients .row .en{font-weight:400;font-size:18px}
+.clients .lead-in{display:flex;align-items:center;gap:16px;color:var(--muted);font-size:15px;font-weight:500;margin-bottom:22px}
+.clients .lead-in::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--line),transparent)}
+.marquee{position:relative;border-block:1px solid var(--line);padding:26px 0;overflow:hidden;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent);
+          mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent)}
+.marquee .track{display:flex;width:max-content;align-items:center;gap:clamp(40px,5vw,72px);animation:slide 32s linear infinite}
+.marquee .logo{flex:none;display:grid;place-items:center;height:clamp(46px,5.5vw,62px);width:clamp(120px,14vw,168px)}
+.marquee .logo img{max-height:100%;max-width:100%;width:auto;height:auto;object-fit:contain;opacity:.62;filter:grayscale(1) brightness(1.7);transition:opacity .35s var(--ease),filter .35s var(--ease)}
+.marquee .logo:hover img{opacity:1;filter:none}
+@keyframes slide{from{transform:translateX(0)}to{transform:translateX(calc(-1 * var(--shift,50%)))}}
+@media(prefers-reduced-motion:reduce){.marquee .track{animation:none;flex-wrap:wrap;justify-content:center;width:auto}}
+@media(max-width:560px){.marquee{padding:20px 0}.marquee .track{gap:34px;animation-duration:26s}}
 
 /* ---------- الفريق ---------- */
 .team{background:var(--navy-deep);padding:clamp(80px,10vw,140px) 0}
@@ -327,9 +335,9 @@ footer p{font-size:14px;color:var(--muted)}
       </figure>
     </div>
     <div class="stats rv">
-      <div><b data-count="20">20</b><small>عضو في الفريق</small></div>
-      <div><b data-count="4">4</b><small>أقسام متخصصة</small></div>
-      <div><b data-count="7" data-suffix="+">7+</b><small>عملاء وشركاء</small></div>
+      <div><b data-count="15" data-suffix="+">15+</b><small>مشروع منجز</small></div>
+      <div><b data-count="500" data-suffix="+">500+</b><small>مقطع وصورة</small></div>
+      <div><b data-count="250" data-suffix="+">250+</b><small>محتوى بصري</small></div>
     </div>
   </div>
 </section>
@@ -463,9 +471,19 @@ footer p{font-size:14px;color:var(--muted)}
 <!-- ===== العملاء ===== -->
 <section class="clients">
   <div class="wrap rv">
-    <div class="row">
-      <span>عملاء وشركاء وثقوا بنا</span>
-      <span class="en">Tomodachi</span><span class="en">Mitsubishi Motors</span><span class="en">Alesayi Motors</span><span class="en">MFA Company</span><span class="en">Rice &amp; Roll</span><span class="en">Noor Path</span><span>مهرجان عفت</span>
+    <div class="lead-in">عملاء وشركاء وثقوا بنا</div>
+    <div class="marquee" dir="ltr">
+      <div class="track" id="logoTrack">
+        <div class="logo"><img src="img/clients/tomodachi.png" alt="Tomodachi" loading="lazy"></div>
+        <div class="logo"><img src="img/clients/mitsubishi.png" alt="Mitsubishi Motors" loading="lazy"></div>
+        <div class="logo"><img src="img/clients/alesayi.png" alt="العيسائي للسيارات" loading="lazy"></div>
+        <div class="logo"><img src="img/clients/mfa.png" alt="MFA Company" loading="lazy"></div>
+        <div class="logo"><img src="img/clients/quadra-ai.png" alt="Quadra AI" loading="lazy"></div>
+        <div class="logo"><img src="img/clients/noor-path.png" alt="نور باث" loading="lazy"></div>
+        <div class="logo"><img src="img/clients/blind-spot.png" alt="Blind Spot" loading="lazy"></div>
+        <div class="logo"><img src="img/clients/alakkas.png" alt="العكاس للتسويق والخدمات العقارية" loading="lazy"></div>
+        <div class="logo"><img src="img/clients/golden-player.png" alt="أكاديمية اللاعب الذهبي" loading="lazy"></div>
+      </div>
     </div>
   </div>
 </section>
@@ -656,6 +674,17 @@ document.documentElement.classList.replace("nojs","js");
 
   /* ---- placeholder link ---- */
   document.querySelectorAll('[data-todo]').forEach(a => a.addEventListener('click', e => { e.preventDefault(); alert('أضف رابط الفيديو هنا لاحقًا'); }));
+
+  /* ---- شريط شعارات العملاء: تكرار يكفي عرض الشاشة ليدور بلا انقطاع ---- */
+  const track = document.getElementById('logoTrack');
+  if (track) {
+    const set = [...track.children], setW = track.scrollWidth;
+    // بعد انزياح مجموعة كاملة يجب أن تغطي البقية عرض الشاشة، وإلا ظهرت فجوة
+    const copies = Math.min(12, Math.max(2, Math.ceil(track.parentElement.clientWidth / setW) + 1));
+    for (let i = 1; i < copies; i++)
+      set.forEach(n => { const c = n.cloneNode(true); c.setAttribute('aria-hidden','true'); track.appendChild(c); });
+    track.style.setProperty('--shift', (100 / copies) + '%');
+  }
 
   /* ---- إرسال الطلب عبر واتساب ---- */
   const form = document.getElementById('form');
