@@ -244,8 +244,11 @@ footer p{font-size:14px;color:var(--muted)}
 /* ---------- lightbox ---------- */
 .lb{position:fixed;inset:0;z-index:80;background:rgba(6,21,48,.96);display:grid;place-items:center;opacity:0;pointer-events:none;transition:opacity .35s}
 .lb.on{opacity:1;pointer-events:auto}
-.lb img{max-width:min(94vw,1400px);max-height:84vh;border-radius:12px;box-shadow:0 30px 80px rgba(0,0,0,.6)}
-.lb .cap{position:absolute;bottom:26px;inset-inline:0;text-align:center;color:var(--muted)}
+.lb img{max-width:min(94vw,1400px);max-height:70vh;border-radius:12px;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+.lb .cap{position:absolute;bottom:22px;inset-inline:0;display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;color:var(--muted);padding-inline:20px}
+.lb .drive{display:inline-flex;align-items:center;gap:9px;padding:9px 18px;border-radius:999px;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.07);color:#fff;font-size:14px;font-weight:700;transition:background .25s,border-color .25s}
+.lb .drive:hover{background:var(--gold);border-color:var(--gold);color:var(--navy-deep)}
+.lb .drive svg{width:17px;height:17px;fill:currentColor;flex:none}
 .lb .x{position:absolute;top:22px;inset-inline-start:22px;width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,.1);font-size:26px;color:#fff}
 .lb .arr{position:absolute;top:50%;transform:translateY(-50%);width:52px;height:52px;border-radius:50%;background:rgba(255,255,255,.1);color:#fff;font-size:26px}
 .lb .prev{inset-inline-end:22px}.lb .next{inset-inline-start:22px}
@@ -253,7 +256,7 @@ footer p{font-size:14px;color:var(--muted)}
 .lb .head .ttl{font-weight:800;color:#fff;font-size:clamp(15px,1.7vw,19px);text-align:center}
 .lb .head .num{font-family:var(--en);font-size:13px;letter-spacing:.14em;color:var(--gold);flex:none}
 .work .count{position:absolute;top:14px;inset-inline-end:14px;z-index:2;padding:5px 11px;border-radius:999px;font-size:11.5px;font-weight:700;color:#fff;background:rgba(6,21,48,.6);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.22);pointer-events:none}
-@media(max-width:700px){.lb .head{inset-inline:68px;top:18px}.lb .arr{width:44px;height:44px}.lb .prev{inset-inline-end:10px}.lb .next{inset-inline-start:10px}.lb img{max-width:92vw;max-height:72vh}.work .count{top:10px;inset-inline-end:10px;padding:4px 9px;font-size:10.5px}}
+@media(max-width:700px){.lb .head{inset-inline:68px;top:18px}.lb .arr{width:44px;height:44px}.lb .prev{inset-inline-end:10px}.lb .next{inset-inline-start:10px}.lb img{max-width:92vw;max-height:60vh}.lb .cap{bottom:16px;gap:10px;font-size:13px}.lb .drive{padding:8px 15px;font-size:13px}.work .count{top:10px;inset-inline-end:10px;padding:4px 9px;font-size:10.5px}}
 
 /* ---------- reveal (خفيف: مرة واحدة فقط عند الدخول) ---------- */
 .js .rv{opacity:0;transform:translateY(26px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
@@ -571,7 +574,7 @@ footer p{font-size:14px;color:var(--muted)}
   <img id="lbimg" src="" alt="">
   <button class="arr next" id="lbn" aria-label="التالي">›</button>
   <div class="head"><span class="ttl" id="lbttl"></span><span class="num" id="lbnum" dir="ltr"></span></div>
-  <div class="cap" id="lbcap"></div>
+  <div class="cap"><span id="lbcap"></span><a class="drive" id="lbdrive" target="_blank" rel="noopener" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.7 3h8.6l5.2 9-4.3 7.5H5.8L1.5 12zm.9 1.6L3.4 12h4.3l4.3-7.4zm6.8 0h-2.6L8.5 12l2.6 4.5h5.2l2.6-4.5z"/></svg>مجلد المشروع في Drive</a></div>
 </div>
 
 <script>
@@ -673,7 +676,7 @@ document.documentElement.classList.replace("nojs","js");
 
   /* ---- الألبومات: كل مشروع مجموعة صور ---- */
   const ALBUMS = {
-    'tomodachi-photo': { title:'معرض توموداتشي — تغطية مصوّرة', shots:[
+    'tomodachi-photo': { title:'معرض توموداتشي — تغطية مصوّرة', drive:'1EoSDrWfUfiOqSpZvMPbEV-mgN1UiJv1i', shots:[
       ['img/samurai.jpg','عرض الساموراي على المسرح'],
       ['img/dancers.jpg','راقصات اليوساكوي'],
       ['img/geisha.jpg','الغيشا — كواليس العرض'],
@@ -681,12 +684,12 @@ document.documentElement.classList.replace("nojs","js");
       ['img/kabuki.jpg','عرض الكابوكي'],
       ['img/crowd.jpg','جمهور المعرض'],
     ]},
-    'tomodachi-design': { title:'معرض توموداتشي — الهوية والتصاميم', shots:[
+    'tomodachi-design': { title:'معرض توموداتشي — الهوية والتصاميم', drive:'1EoSDrWfUfiOqSpZvMPbEV-mgN1UiJv1i', shots:[
       ['img/carousel.jpg','كاروسيل الورش اليابانية'],
       ['img/infographic.jpg','إنفوجرافيك المعرض'],
       ['img/posters.jpg','بوسترات Tatakae — زون التحدي'],
     ]},
-    'akkas':     { title:'العكاس العقارية — أوتاد المحمدية', shots:[
+    'akkas':     { title:'العكاس العقارية — أوتاد المحمدية', drive:'1Y2IwdNP5DfsTst2IhyZ9iJCPaI_jwTwC', shots:[
       ['img/works/akkas-awtad.jpg','إعلان مشروع أوتاد المحمدية'],
     ]},
     'noorpath':  { title:'Noor Path — هوية بصرية ومطبوعات', shots:[
@@ -703,7 +706,8 @@ document.documentElement.classList.replace("nojs","js");
   /* ---- lightbox بألبومات ---- */
   const lb = document.getElementById('lb'), lbimg = document.getElementById('lbimg'),
         lbcap = document.getElementById('lbcap'), lbnum = document.getElementById('lbnum'),
-        lbttl = document.getElementById('lbttl'), lbarr = [document.getElementById('lbp'), document.getElementById('lbn')];
+        lbttl = document.getElementById('lbttl'), lbdrive = document.getElementById('lbdrive'),
+        lbarr = [document.getElementById('lbp'), document.getElementById('lbn')];
   let shots = [], cur = 0;
 
   const render = () => {
@@ -716,6 +720,8 @@ document.documentElement.classList.replace("nojs","js");
   const show = (albumId, startSrc) => {
     const al = ALBUMS[albumId]; if (!al) return;
     shots = al.shots; lbttl.textContent = al.title;
+    lbdrive.hidden = !al.drive;
+    if (al.drive) lbdrive.href = 'https://drive.google.com/drive/folders/' + al.drive;
     cur = Math.max(0, shots.findIndex(s => startSrc.endsWith(s[0])));
     render(); lb.classList.add('on'); document.body.style.overflow = 'hidden';
   };
