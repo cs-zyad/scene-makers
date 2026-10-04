@@ -249,6 +249,11 @@ footer p{font-size:14px;color:var(--muted)}
 .lb .x{position:absolute;top:22px;inset-inline-start:22px;width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,.1);font-size:26px;color:#fff}
 .lb .arr{position:absolute;top:50%;transform:translateY(-50%);width:52px;height:52px;border-radius:50%;background:rgba(255,255,255,.1);color:#fff;font-size:26px}
 .lb .prev{inset-inline-end:22px}.lb .next{inset-inline-start:22px}
+.lb .head{position:absolute;top:26px;inset-inline:88px;display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap}
+.lb .head .ttl{font-weight:800;color:#fff;font-size:clamp(15px,1.7vw,19px);text-align:center}
+.lb .head .num{font-family:var(--en);font-size:13px;letter-spacing:.14em;color:var(--gold);flex:none}
+.work .count{position:absolute;top:14px;inset-inline-end:14px;z-index:2;padding:5px 11px;border-radius:999px;font-size:11.5px;font-weight:700;color:#fff;background:rgba(6,21,48,.6);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.22);pointer-events:none}
+@media(max-width:700px){.lb .head{inset-inline:68px;top:18px}.lb .arr{width:44px;height:44px}.lb .prev{inset-inline-end:10px}.lb .next{inset-inline-start:10px}.lb img{max-width:92vw;max-height:72vh}.work .count{top:10px;inset-inline-end:10px;padding:4px 9px;font-size:10.5px}}
 
 /* ---------- reveal (خفيف: مرة واحدة فقط عند الدخول) ---------- */
 .js .rv{opacity:0;transform:translateY(26px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
@@ -454,17 +459,17 @@ footer p{font-size:14px;color:var(--muted)}
     </div>
 
     <div class="gallery" id="gallery">
-      <figure class="work feature" data-t="photo" data-cap="تغطية عرض الساموراي — معرض توموداتشي"><img src="img/samurai.jpg" alt="عرض ساموراي على المسرح"><figcaption class="info"><b>عرض الساموراي</b><small>تصوير فعاليات — توموداتشي</small></figcaption></figure>
-      <figure class="work" data-t="design" data-cap="إنفوجرافيك وبوسترات معرض توموداتشي"><img src="img/infographic.jpg" alt="تصاميم إنفوجرافيك"><figcaption class="info"><b>إنفوجرافيك توموداتشي</b><small>تصميم</small></figcaption></figure>
-      <figure class="work" data-t="photo" data-cap="راقصات اليوساكوي — توموداتشي"><img src="img/dancers.jpg" alt="راقصات يابانيات"><figcaption class="info"><b>راقصات اليوساكوي</b><small>تصوير فعاليات</small></figcaption></figure>
-      <figure class="work wide" data-t="design" data-cap="بوسترات Tatakae — زون التحدي"><img src="img/posters.jpg" alt="بوسترات"><figcaption class="info"><b>بوسترات Tatakae</b><small>تصميم — سوشال ميديا</small></figcaption></figure>
-      <figure class="work" data-t="photo" data-cap="DJ Painter — عرض حي"><img src="img/djpainter.jpg" alt="فنان على المسرح"><figcaption class="info"><b>DJ Painter</b><small>تصوير فعاليات</small></figcaption></figure>
-      <figure class="work tall" data-t="design" data-cap="أوتاد المحمدية — إعلان عقاري لشركة العكاس"><img src="img/works/akkas-awtad.jpg" alt="إعلان مشروع أوتاد المحمدية" loading="lazy"><figcaption class="info"><b>أوتاد المحمدية</b><small>تصميم إعلاني — العكاس العقارية</small></figcaption></figure>
-      <figure class="work" data-t="design" data-cap="مطبوعات هوية Noor Path"><img src="img/prints.jpg" alt="مطبوعات نور باث"><figcaption class="info"><b>مطبوعات Noor Path</b><small>هوية بصرية ومطبوعات</small></figcaption></figure>
-      <figure class="work wide" data-t="design" data-cap="كاروسيل ورش توموداتشي"><img src="img/carousel.jpg" alt="تصاميم كاروسيل"><figcaption class="info"><b>كاروسيل الورش اليابانية</b><small>تصميم — كاروسيل</small></figcaption></figure>
-      <figure class="work" data-t="photo" data-cap="عازفة الناي — عرض موسيقي"><img src="img/flute.jpg" alt="عازفة ناي ياباني"><figcaption class="info"><b>عرض موسيقي</b><small>تصوير</small></figcaption></figure>
-      <figure class="work" data-t="photo" data-cap="غيشا — كواليس العرض"><img src="img/geisha.jpg" alt="غيشا على المسرح"><figcaption class="info"><b>الغيشا</b><small>تصوير</small></figcaption></figure>
-      <figure class="work" data-t="photo" data-cap="تغطية مؤتمر — قاعة فندقية"><img src="img/hall.jpg" alt="تغطية مؤتمر"><figcaption class="info"><b>تغطية مؤتمر</b><small>تصوير مؤسسي</small></figcaption></figure>
+      <figure data-album="tomodachi-photo" class="work feature" data-t="photo" data-cap="تغطية عرض الساموراي — معرض توموداتشي"><img src="img/samurai.jpg" alt="عرض ساموراي على المسرح"><figcaption class="info"><b>عرض الساموراي</b><small>تصوير فعاليات — توموداتشي</small></figcaption></figure>
+      <figure data-album="tomodachi-design" class="work" data-t="design" data-cap="إنفوجرافيك وبوسترات معرض توموداتشي"><img src="img/infographic.jpg" alt="تصاميم إنفوجرافيك"><figcaption class="info"><b>إنفوجرافيك توموداتشي</b><small>تصميم</small></figcaption></figure>
+      <figure data-album="tomodachi-photo" class="work" data-t="photo" data-cap="راقصات اليوساكوي — توموداتشي"><img src="img/dancers.jpg" alt="راقصات يابانيات"><figcaption class="info"><b>راقصات اليوساكوي</b><small>تصوير فعاليات</small></figcaption></figure>
+      <figure data-album="tomodachi-design" class="work wide" data-t="design" data-cap="بوسترات Tatakae — زون التحدي"><img src="img/posters.jpg" alt="بوسترات"><figcaption class="info"><b>بوسترات Tatakae</b><small>تصميم — سوشال ميديا</small></figcaption></figure>
+      <figure data-album="djpainter" class="work" data-t="photo" data-cap="DJ Painter — عرض حي"><img src="img/djpainter.jpg" alt="فنان على المسرح"><figcaption class="info"><b>DJ Painter</b><small>تصوير فعاليات</small></figcaption></figure>
+      <figure data-album="akkas" class="work tall" data-t="design" data-cap="أوتاد المحمدية — إعلان عقاري لشركة العكاس"><img src="img/works/akkas-awtad.jpg" alt="إعلان مشروع أوتاد المحمدية" loading="lazy"><figcaption class="info"><b>أوتاد المحمدية</b><small>تصميم إعلاني — العكاس العقارية</small></figcaption></figure>
+      <figure data-album="noorpath" class="work" data-t="design" data-cap="مطبوعات هوية Noor Path"><img src="img/prints.jpg" alt="مطبوعات نور باث"><figcaption class="info"><b>مطبوعات Noor Path</b><small>هوية بصرية ومطبوعات</small></figcaption></figure>
+      <figure data-album="tomodachi-design" class="work wide" data-t="design" data-cap="كاروسيل ورش توموداتشي"><img src="img/carousel.jpg" alt="تصاميم كاروسيل"><figcaption class="info"><b>كاروسيل الورش اليابانية</b><small>تصميم — كاروسيل</small></figcaption></figure>
+      <figure data-album="tomodachi-photo" class="work" data-t="photo" data-cap="عازفة الناي — عرض موسيقي"><img src="img/flute.jpg" alt="عازفة ناي ياباني"><figcaption class="info"><b>عرض موسيقي</b><small>تصوير</small></figcaption></figure>
+      <figure data-album="tomodachi-photo" class="work" data-t="photo" data-cap="غيشا — كواليس العرض"><img src="img/geisha.jpg" alt="غيشا على المسرح"><figcaption class="info"><b>الغيشا</b><small>تصوير</small></figcaption></figure>
+      <figure data-album="conference" class="work" data-t="photo" data-cap="تغطية مؤتمر — قاعة فندقية"><img src="img/hall.jpg" alt="تغطية مؤتمر"><figcaption class="info"><b>تغطية مؤتمر</b><small>تصوير مؤسسي</small></figcaption></figure>
 
       <a class="work" data-t="video" href="https://q.me-qr.com/9nnebq2t" target="_blank" rel="noopener"><img src="img/crowd.jpg" alt=""><span class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span><span class="info"><b>برومو الفريق — توموداتشي</b><small>مونتاج فيديو</small></span></a>
       <a class="work" data-t="video" href="https://drive.google.com/file/d/1C8A4cQx5ncx6vI-_rR56_Gp9Vzf3HV2U/view" target="_blank" rel="noopener"><img src="img/kabuki.jpg" alt=""><span class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span><span class="info"><b>برومو مهرجان عفت</b><small>مونتاج فيديو</small></span></a>
@@ -565,6 +570,7 @@ footer p{font-size:14px;color:var(--muted)}
   <button class="arr prev" id="lbp" aria-label="السابق">‹</button>
   <img id="lbimg" src="" alt="">
   <button class="arr next" id="lbn" aria-label="التالي">›</button>
+  <div class="head"><span class="ttl" id="lbttl"></span><span class="num" id="lbnum" dir="ltr"></span></div>
   <div class="cap" id="lbcap"></div>
 </div>
 
@@ -665,18 +671,84 @@ document.documentElement.classList.replace("nojs","js");
     works.forEach(w => w.classList.toggle('hide', f !== 'all' && w.dataset.t !== f));
   }));
 
-  /* ---- lightbox ---- */
-  const lb = document.getElementById('lb'), lbimg = document.getElementById('lbimg'), lbcap = document.getElementById('lbcap');
-  const photos = works.filter(w => w.tagName === 'FIGURE');
-  let cur = 0;
-  const show = i => { cur = (i + photos.length) % photos.length; lbimg.src = photos[cur].querySelector('img').src; lbcap.textContent = photos[cur].dataset.cap; lb.classList.add('on'); document.body.style.overflow='hidden'; };
-  const hide = () => { lb.classList.remove('on'); document.body.style.overflow=''; };
-  photos.forEach((p, i) => { p.tabIndex = 0; p.addEventListener('click', () => show(i)); p.addEventListener('keydown', e => e.key === 'Enter' && show(i)); });
+  /* ---- الألبومات: كل مشروع مجموعة صور ---- */
+  const ALBUMS = {
+    'tomodachi-photo': { title:'معرض توموداتشي — تغطية مصوّرة', shots:[
+      ['img/samurai.jpg','عرض الساموراي على المسرح'],
+      ['img/dancers.jpg','راقصات اليوساكوي'],
+      ['img/geisha.jpg','الغيشا — كواليس العرض'],
+      ['img/flute.jpg','عازفة الناي الياباني'],
+      ['img/kabuki.jpg','عرض الكابوكي'],
+      ['img/crowd.jpg','جمهور المعرض'],
+    ]},
+    'tomodachi-design': { title:'معرض توموداتشي — الهوية والتصاميم', shots:[
+      ['img/carousel.jpg','كاروسيل الورش اليابانية'],
+      ['img/infographic.jpg','إنفوجرافيك المعرض'],
+      ['img/posters.jpg','بوسترات Tatakae — زون التحدي'],
+    ]},
+    'akkas':     { title:'العكاس العقارية — أوتاد المحمدية', shots:[
+      ['img/works/akkas-awtad.jpg','إعلان مشروع أوتاد المحمدية'],
+    ]},
+    'noorpath':  { title:'Noor Path — هوية بصرية ومطبوعات', shots:[
+      ['img/prints.jpg','مطبوعات وهوية Noor Path'],
+    ]},
+    'djpainter': { title:'DJ Painter — تغطية عرض حي', shots:[
+      ['img/djpainter.jpg','الفنان على المسرح'],
+    ]},
+    'conference':{ title:'تغطية مؤتمر مؤسسي', shots:[
+      ['img/hall.jpg','القاعة أثناء الجلسة'],
+    ]},
+  };
+
+  /* ---- lightbox بألبومات ---- */
+  const lb = document.getElementById('lb'), lbimg = document.getElementById('lbimg'),
+        lbcap = document.getElementById('lbcap'), lbnum = document.getElementById('lbnum'),
+        lbttl = document.getElementById('lbttl'), lbarr = [document.getElementById('lbp'), document.getElementById('lbn')];
+  let shots = [], cur = 0;
+
+  const render = () => {
+    const [src, cap] = shots[cur];
+    lbimg.src = src; lbimg.alt = cap;
+    lbcap.textContent = cap;
+    lbnum.textContent = shots.length > 1 ? `${cur+1} / ${shots.length}` : '';
+    lbarr.forEach(a => a.hidden = shots.length < 2);
+  };
+  const show = (albumId, startSrc) => {
+    const al = ALBUMS[albumId]; if (!al) return;
+    shots = al.shots; lbttl.textContent = al.title;
+    cur = Math.max(0, shots.findIndex(s => startSrc.endsWith(s[0])));
+    render(); lb.classList.add('on'); document.body.style.overflow = 'hidden';
+  };
+  const step = d => { cur = (cur + d + shots.length) % shots.length; render(); };
+  const hide = () => { lb.classList.remove('on'); document.body.style.overflow = ''; };
+
+  works.filter(w => w.dataset.album).forEach(w => {
+    const open = () => show(w.dataset.album, w.querySelector('img').getAttribute('src'));
+    w.tabIndex = 0;
+    w.addEventListener('click', open);
+    w.addEventListener('keydown', e => e.key === 'Enter' && open());
+    const n = (ALBUMS[w.dataset.album]?.shots || []).length;
+    if (n > 1) { const b = document.createElement('span'); b.className = 'count'; b.textContent = `${n} صور`; w.appendChild(b); }
+  });
+
   document.getElementById('lbx').onclick = hide;
-  document.getElementById('lbn').onclick = () => show(cur + 1);
-  document.getElementById('lbp').onclick = () => show(cur - 1);
+  lbarr[1].onclick = () => step(1);
+  lbarr[0].onclick = () => step(-1);
   lb.addEventListener('click', e => e.target === lb && hide());
-  addEventListener('keydown', e => { if (!lb.classList.contains('on')) return; if (e.key === 'Escape') hide(); if (e.key === 'ArrowLeft') show(cur + 1); if (e.key === 'ArrowRight') show(cur - 1); });
+  addEventListener('keydown', e => {
+    if (!lb.classList.contains('on')) return;
+    if (e.key === 'Escape') hide();
+    if (e.key === 'ArrowLeft') step(1);
+    if (e.key === 'ArrowRight') step(-1);
+  });
+  // سحب بالإصبع للتنقل داخل الألبوم
+  let tx = null;
+  lb.addEventListener('touchstart', e => tx = e.touches[0].clientX, {passive:true});
+  lb.addEventListener('touchend', e => {
+    if (tx === null) return;
+    const dx = e.changedTouches[0].clientX - tx; tx = null;
+    if (Math.abs(dx) > 50) step(dx > 0 ? -1 : 1);
+  }, {passive:true});
 
   /* ---- placeholder link ---- */
   document.querySelectorAll('[data-todo]').forEach(a => a.addEventListener('click', e => { e.preventDefault(); alert('أضف رابط الفيديو هنا لاحقًا'); }));
