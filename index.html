@@ -167,6 +167,7 @@ p.lead{font-size:clamp(17px,1.5vw,20px);max-width:62ch;color:var(--muted)}
 .work{position:relative;aspect-ratio:3/2;border-radius:16px;overflow:hidden;background:var(--navy-deep);cursor:pointer;transition:opacity .4s,transform .4s var(--ease)}
 .work.feature{grid-column:span 2;grid-row:span 2;aspect-ratio:3/2}
 .work.wide{grid-column:span 2;aspect-ratio:3/1}
+.work.tall{grid-row:span 2;aspect-ratio:auto}
 .work img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
 .work:hover img{transform:scale(1.05)}
 .work .info{position:absolute;inset-inline:0;bottom:0;display:flex;flex-direction:column;gap:2px;padding:18px 20px 16px;background:linear-gradient(0deg,rgba(6,21,48,.94) 12%,rgba(6,21,48,.72) 52%,transparent 100%);transition:padding-bottom .35s var(--ease)}
@@ -180,8 +181,8 @@ p.lead{font-size:clamp(17px,1.5vw,20px);max-width:62ch;color:var(--muted)}
 .work:hover .play{background:var(--gold);transform:scale(1.08)}
 .work:hover .play svg{fill:var(--navy-deep)}
 .work .play svg{width:16px;height:16px;fill:#fff;margin-inline-end:-2px;transition:fill .3s}
-@media(max-width:900px){.gallery{grid-template-columns:repeat(2,1fr)}.work.feature{grid-row:span 1}.work.feature,.work.wide{grid-column:span 2}.work.wide{aspect-ratio:12/5}}
-@media(max-width:560px){.gallery{grid-template-columns:repeat(2,1fr);gap:10px}.work{grid-row:span 1;aspect-ratio:4/3;border-radius:13px}.work::after{border-radius:13px}.work.feature,.work.wide{grid-column:span 2;grid-row:span 1}.work.feature{aspect-ratio:3/2}.work.wide{aspect-ratio:12/5}.work .info{padding:20px 11px 9px;gap:1px;background:linear-gradient(0deg,rgba(6,21,48,.96) 18%,rgba(6,21,48,.7) 62%,transparent 100%)}.work .info b{font-size:12.5px;line-height:1.3}.work .info small{font-size:10.5px}.work.feature .info b,.work.wide .info b{font-size:15px}.work.feature .info small,.work.wide .info small{font-size:11.5px}.filters button{padding:8px 14px;font-size:14px}.names{grid-template-columns:1fr 1fr}.names li{font-size:14px;padding:11px 12px}.team .hero{aspect-ratio:4/3}.contact h2.big{font-size:56px}.clients .row{gap:8px 22px;padding:22px 0}.clients .row span{font-size:16px}}
+@media(max-width:900px){.gallery{grid-template-columns:repeat(2,1fr)}.work.feature{grid-row:span 1}.work.feature,.work.wide{grid-column:span 2}.work.wide{aspect-ratio:12/5}.work.tall{grid-row:span 1;aspect-ratio:3/4}}
+@media(max-width:560px){.gallery{grid-template-columns:repeat(2,1fr);gap:10px}.work{grid-row:span 1;aspect-ratio:4/3;border-radius:13px}.work::after{border-radius:13px}.work.feature,.work.wide{grid-column:span 2;grid-row:span 1}.work.feature{aspect-ratio:3/2}.work.wide{aspect-ratio:12/5}.work.tall{grid-row:span 1;aspect-ratio:3/4}.work .info{padding:20px 11px 9px;gap:1px;background:linear-gradient(0deg,rgba(6,21,48,.96) 18%,rgba(6,21,48,.7) 62%,transparent 100%)}.work .info b{font-size:12.5px;line-height:1.3}.work .info small{font-size:10.5px}.work.feature .info b,.work.wide .info b{font-size:15px}.work.feature .info small,.work.wide .info small{font-size:11.5px}.filters button{padding:8px 14px;font-size:14px}.names{grid-template-columns:1fr 1fr}.names li{font-size:14px;padding:11px 12px}.team .hero{aspect-ratio:4/3}.contact h2.big{font-size:56px}.clients .row{gap:8px 22px;padding:22px 0}.clients .row span{font-size:16px}}
 
 /* ---------- العملاء ---------- */
 .clients{padding:0 0 clamp(70px,8vw,120px)}
@@ -458,6 +459,7 @@ footer p{font-size:14px;color:var(--muted)}
       <figure class="work" data-t="photo" data-cap="راقصات اليوساكوي — توموداتشي"><img src="img/dancers.jpg" alt="راقصات يابانيات"><figcaption class="info"><b>راقصات اليوساكوي</b><small>تصوير فعاليات</small></figcaption></figure>
       <figure class="work wide" data-t="design" data-cap="بوسترات Tatakae — زون التحدي"><img src="img/posters.jpg" alt="بوسترات"><figcaption class="info"><b>بوسترات Tatakae</b><small>تصميم — سوشال ميديا</small></figcaption></figure>
       <figure class="work" data-t="photo" data-cap="DJ Painter — عرض حي"><img src="img/djpainter.jpg" alt="فنان على المسرح"><figcaption class="info"><b>DJ Painter</b><small>تصوير فعاليات</small></figcaption></figure>
+      <figure class="work tall" data-t="design" data-cap="أوتاد المحمدية — إعلان عقاري لشركة العكاس"><img src="img/works/akkas-awtad.jpg" alt="إعلان مشروع أوتاد المحمدية" loading="lazy"><figcaption class="info"><b>أوتاد المحمدية</b><small>تصميم إعلاني — العكاس العقارية</small></figcaption></figure>
       <figure class="work" data-t="design" data-cap="مطبوعات هوية Noor Path"><img src="img/prints.jpg" alt="مطبوعات نور باث"><figcaption class="info"><b>مطبوعات Noor Path</b><small>هوية بصرية ومطبوعات</small></figcaption></figure>
       <figure class="work wide" data-t="design" data-cap="كاروسيل ورش توموداتشي"><img src="img/carousel.jpg" alt="تصاميم كاروسيل"><figcaption class="info"><b>كاروسيل الورش اليابانية</b><small>تصميم — كاروسيل</small></figcaption></figure>
       <figure class="work" data-t="photo" data-cap="عازفة الناي — عرض موسيقي"><img src="img/flute.jpg" alt="عازفة ناي ياباني"><figcaption class="info"><b>عرض موسيقي</b><small>تصوير</small></figcaption></figure>
