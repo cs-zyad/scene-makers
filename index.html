@@ -191,13 +191,13 @@ p.lead{font-size:clamp(17px,1.5vw,20px);max-width:62ch;color:var(--muted)}
 .marquee{position:relative;border-block:1px solid var(--line);padding:26px 0;overflow:hidden;
   -webkit-mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent);
           mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent)}
-.marquee .track{display:flex;width:max-content;align-items:center;gap:clamp(40px,5vw,72px);animation:slide 32s linear infinite}
+.marquee .track{display:flex;width:max-content;align-items:center;gap:clamp(40px,5vw,72px);animation:slide 46s linear infinite}
 .marquee .logo{flex:none;display:grid;place-items:center;height:clamp(46px,5.5vw,62px);width:clamp(120px,14vw,168px)}
 .marquee .logo img{max-height:100%;max-width:100%;width:auto;height:auto;object-fit:contain;opacity:.62;filter:grayscale(1) brightness(1.7);transition:opacity .35s var(--ease),filter .35s var(--ease)}
 .marquee .logo:hover img{opacity:1;filter:none}
 @keyframes slide{from{transform:translateX(0)}to{transform:translateX(calc(-1 * var(--shift,50%)))}}
 @media(prefers-reduced-motion:reduce){.marquee .track{animation:none;flex-wrap:wrap;justify-content:center;width:auto}}
-@media(max-width:560px){.marquee{padding:20px 0}.marquee .track{gap:34px;animation-duration:26s}}
+@media(max-width:560px){.marquee{padding:20px 0}.marquee .track{gap:34px;animation-duration:38s}}
 
 /* ---------- الفريق ---------- */
 .team{background:var(--navy-deep);padding:clamp(80px,10vw,140px) 0}
@@ -497,6 +497,10 @@ footer p{font-size:14px;color:var(--muted)}
         <div class="logo"><img src="img/clients/blind-spot.png" alt="Blind Spot" loading="lazy"></div>
         <div class="logo"><img src="img/clients/alakkas.png" alt="العكاس للتسويق والخدمات العقارية" loading="lazy"></div>
         <div class="logo"><img src="img/clients/golden-player.png" alt="أكاديمية اللاعب الذهبي" loading="lazy"></div>
+        <div class="logo"><img src="img/clients/blue-waves.png" alt="شركة الموج الأزرق للشحن البحري — Blue Waves Shipping Agency" loading="lazy"></div>
+        <div class="logo"><img src="img/clients/marafi-marine.png" alt="مرافي البحرية — Marafi Marine" loading="lazy"></div>
+        <div class="logo"><img src="img/clients/al-ibtikar-marine.png" alt="الابتكار البحرية — Al Ibtikar Marine" loading="lazy"></div>
+        <div class="logo"><img src="img/clients/golden-shield.png" alt="الدرع الذهبي — Golden Shield" loading="lazy"></div>
       </div>
     </div>
   </div>
