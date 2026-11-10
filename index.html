@@ -57,44 +57,40 @@ p.lead{font-size:clamp(17px,1.5vw,20px);max-width:62ch;color:var(--muted)}
 .mobile .cta{margin:20px auto 0;display:table}
 @media(max-width:900px){.links,.nav .cta{display:none}.burger{display:grid}}
 
-/* ---------- hero: فيلم بالتمرير ---------- */
-.film{position:relative;height:460vh}
-.film .stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
-.frame{position:absolute;inset:0;opacity:1;will-change:opacity,transform}
-.js .frame{opacity:0}.js .frame:first-child,.nojs .frame:not(:first-child){opacity:1}.nojs .frame:not(:first-child){display:none}
-.frame img{width:100%;height:100%;object-fit:cover;object-position:center 35%;filter:saturate(1.08) contrast(1.04);-webkit-backface-visibility:hidden}
-.frame::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(9,32,63,.78) 0%,rgba(9,32,63,.3) 22%,rgba(9,32,63,.3) 45%,rgba(9,32,63,.9) 78%,rgba(9,32,63,.97) 100%)}
-.film .copy{position:absolute;inset:0;z-index:20;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:clamp(96px,13vh,130px)}
-.film h1{font-size:clamp(48px,9vw,150px);font-weight:900;line-height:1.05;color:#fff;letter-spacing:-.01em;text-shadow:0 10px 40px rgba(0,0,0,.4)}
+/* ---------- hero: صورة واحدة ونص مرتب ---------- */
+.film{position:relative;height:100vh;height:100svh;min-height:600px;max-height:1100px;overflow:hidden;background:var(--navy-deep)}
+.film .bg{position:absolute;inset:0}
+.film .bg img{width:100%;height:100%;object-fit:cover;object-position:center 55%;transform:scale(1.06);transition:transform 2.4s var(--ease)}
+.film.ready .bg img{transform:scale(1)}
+.film .bg::after{content:"";position:absolute;inset:0;background:
+  linear-gradient(180deg,rgba(6,21,48,.72) 0%,rgba(6,21,48,.18) 24%,rgba(6,21,48,.30) 52%,rgba(6,21,48,.94) 100%),
+  linear-gradient(270deg,rgba(6,21,48,.82) 0%,rgba(6,21,48,.45) 38%,transparent 66%)}
+@media(max-width:700px){.film .bg::after{background:linear-gradient(180deg,rgba(6,21,48,.7) 0%,rgba(6,21,48,.2) 26%,rgba(6,21,48,.55) 52%,rgba(6,21,48,.96) 100%)}}
+.film .copy{position:absolute;inset:0;z-index:2;display:flex;align-items:flex-end;padding-bottom:clamp(72px,11vh,120px)}
+.film .copy .wrap{display:flex;flex-direction:column;align-items:flex-start}
+.film .kicker{display:inline-flex;align-items:center;gap:12px;font-family:var(--en);font-size:12.5px;letter-spacing:.28em;color:var(--gold-light);margin-bottom:clamp(14px,2vh,22px)}
+.film .kicker::before{content:"";width:34px;height:2px;background:var(--gold)}
+.film h1{font-size:clamp(46px,7vw,112px);font-weight:900;line-height:1.08;color:#fff;letter-spacing:-.01em;text-shadow:0 8px 34px rgba(0,0,0,.45)}
 .film h1 .w{display:inline-block}
-.js .film h1 .w{opacity:0;transform:translateY(.35em);transition:opacity .7s var(--ease),transform .7s var(--ease)}
-.js .film.ready h1 .w{opacity:1;transform:none}
-.film h1 .w:nth-child(2){transition-delay:.12s}.film h1 .w:nth-child(3){transition-delay:.24s}
-.film .tag{display:flex;gap:28px;align-items:center;flex-wrap:wrap;margin-top:clamp(18px,3vh,30px)}
-.film .tag p{font-size:clamp(16px,1.6vw,21px);max-width:44ch;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.55);text-wrap:balance}
-@media(max-width:1000px){.film .tag{flex-direction:column;align-items:flex-start;gap:20px}.film .tag p{max-width:52ch}}
-.film .caption{position:absolute;z-index:20;bottom:clamp(24px,4vh,40px);inset-inline:0;display:flex;justify-content:space-between;align-items:center;font-family:var(--en);font-size:12px;letter-spacing:.2em;color:var(--muted)}
-.film .caption .cap{transition:opacity .4s}
-.film .caption .wrap{display:flex;justify-content:space-between;gap:20px}
-.progress{position:absolute;z-index:20;bottom:0;inset-inline:0;height:3px;background:rgba(255,255,255,.12)}
-.progress i{position:absolute;inset-inline-end:0;top:0;bottom:0;width:0;background:var(--gold)}
-@supports (animation-timeline: view()) {
-  .film{view-timeline:--film block}
-  .nojs .frame:not(:first-child){display:block}
-  .frame{animation:linear both;animation-timeline:--film;animation-range:contain 0% contain 100%}
-  .frame:nth-child(1){animation-name:f1}.frame:nth-child(2){animation-name:f2}.frame:nth-child(3){animation-name:f3}
-  .frame img{animation:kb linear both;animation-timeline:--film;animation-range:contain 0% contain 100%}
-  .progress i{animation:grow linear both;animation-timeline:--film;animation-range:contain 0% contain 100%}
-  @keyframes f1{0%{opacity:1}33%{opacity:1}45%{opacity:0}100%{opacity:0}}
-  @keyframes f2{0%{opacity:0}21%{opacity:0}33%{opacity:1}55%{opacity:1}67%{opacity:0}100%{opacity:0}}
-  @keyframes f3{0%{opacity:0}55%{opacity:0}67%{opacity:1}100%{opacity:1}}
-  @keyframes kb{from{transform:scale(1.02)}to{transform:scale(1.14)}}
-  @keyframes grow{from{width:0}to{width:100%}}
+.js .film h1 .w,.js .film .reveal{opacity:0;transform:translateY(.35em);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.js .film.ready h1 .w,.js .film.ready .reveal{opacity:1;transform:none}
+.film h1 .w:nth-child(2){transition-delay:.1s}.film h1 .w:nth-child(3){transition-delay:.2s}
+.js .film .lead-hero.reveal{transition-delay:.32s}.js .film .btns.reveal{transition-delay:.44s}
+.film .lead-hero{font-size:clamp(16.5px,1.45vw,20px);line-height:1.8;max-width:46ch;color:rgba(255,255,255,.92);margin-top:clamp(14px,2.2vh,22px);text-shadow:0 2px 14px rgba(0,0,0,.5)}
+.film .btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:clamp(22px,3.4vh,34px)}
+.film .btn-ghost{display:inline-flex;align-items:center;padding:11px 22px;border-radius:999px;border:1px solid rgba(255,255,255,.35);color:#fff;font-weight:700;font-size:15px;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);transition:border-color .25s,color .25s}
+.film .btn-ghost:hover{border-color:var(--gold);color:var(--gold-light)}
+.film .caption{position:absolute;z-index:2;bottom:clamp(22px,3.5vh,34px);inset-inline:0;font-family:var(--en);font-size:11.5px;letter-spacing:.22em;color:rgba(255,255,255,.55)}
+.film .caption .wrap{display:flex;justify-content:flex-end}
+@media(max-width:700px){
+  .film{min-height:560px}
+  .film .bg img{object-position:58% 50%}
+  .film h1{font-size:clamp(42px,12vw,62px)}
+  .film .copy{padding-bottom:64px}
+  .film .lead-hero{font-size:16px}
+  .film .btns .cta,.film .btn-ghost{padding:11px 18px;font-size:14.5px}
+  .film .caption{display:none}
 }
-.film .scrollhint{position:absolute;z-index:20;top:50%;inset-inline-start:var(--gutter);transform:translateY(-50%);writing-mode:vertical-rl;font-family:var(--en);font-size:11px;letter-spacing:.3em;color:var(--muted);display:flex;gap:14px;align-items:center}
-.film .scrollhint::after{content:"";width:1px;height:70px;background:linear-gradient(var(--gold),transparent)}
-@media(max-width:700px){.film .scrollhint{display:none}.film{height:320vh}.film h1{font-size:clamp(46px,13vw,68px)}.film .copy{padding-bottom:72px}.film .tag{gap:18px;margin-top:18px}.film .tag p{font-size:16px;max-width:none}.film .tag .cta{padding:12px 20px}.film .caption{font-size:10px;bottom:16px}}
-@media(max-height:620px){.film .scrollhint{display:none}.film .copy{padding-bottom:72px}.film .tag{margin-top:16px}}
 
 /* ---------- الشريط المتحرك ---------- */
 .ticker{border-block:1px solid var(--line);background:var(--navy-deep);overflow:hidden;padding:16px 0}
@@ -308,8 +304,7 @@ footer p{font-size:14px;color:var(--muted)}
 @media(prefers-reduced-motion:reduce){
   .rv{opacity:1;transform:none;transition:none}
   .ticker .track{animation:none}
-  .film{height:auto}.film .stage{position:relative;height:100vh}
-  .js .frame{opacity:0}.js .frame:first-child,.nojs .frame:not(:first-child){opacity:1}.nojs .frame:not(:first-child){display:none}
+  .film .bg img{transform:none;transition:none}
   html{scroll-behavior:auto}
 }
 </style>
@@ -341,24 +336,19 @@ footer p{font-size:14px;color:var(--muted)}
 
 <!-- ===== الواجهة: فيلم يتحرك بالتمرير ===== -->
 <section class="film" id="top">
-  <div class="stage">
-    <div class="frame" data-cap="Tomodachi Exhibition — Jeddah"><img src="img/crowd.jpg" alt="" loading="eager"></div>
-    <div class="frame" data-cap="Behind the scenes — Scene Makers crew"><img src="img/team.jpg" alt=""></div>
-    <div class="frame" data-cap="Stage coverage — Kabuki performance"><img src="img/kabuki.jpg" alt=""></div>
-
-    <div class="copy">
-      <div class="wrap">
-        <h1><span class="w">لنصنع</span> <span class="w">كل</span> <span class="w">مشهد</span></h1>
-        <div class="tag">
-          <p>فريق إعلامي يجمع التصوير والمونتاج والتصميم وكتابة المحتوى، ليحوّل الفكرة إلى تجربة بصرية تُروى بأفضل صورة.</p>
-          <a class="cta" href="#works">شاهد أعمالنا</a>
-        </div>
+  <div class="bg"><img src="img/hero.jpg" srcset="img/hero-1200.jpg 1200w, img/hero.jpg 2400w" sizes="100vw" alt="عرض حي على مسرح معرض توموداتشي بتغطية فريق صناع المشهد" fetchpriority="high"></div>
+  <div class="copy">
+    <div class="wrap">
+      <span class="kicker reveal">SCENE MAKERS — JEDDAH</span>
+      <h1><span class="w">لنصنع</span> <span class="w">كل</span> <span class="w">مشهد</span></h1>
+      <p class="lead-hero reveal">فريق إعلامي يجمع التصوير والمونتاج والتصميم وكتابة المحتوى، ليحوّل فكرتك إلى تجربة بصرية تُروى بأفضل صورة.</p>
+      <div class="btns reveal">
+        <a class="cta" href="#works">شاهد أعمالنا</a>
+        <a class="btn-ghost" href="#contact">تواصل معنا</a>
       </div>
     </div>
-    <div class="scrollhint">SCROLL</div>
-    <div class="caption"><div class="wrap"><span class="cap" id="cap">Tomodachi Exhibition — Jeddah</span><span id="counter" dir="ltr">01 / 03</span></div></div>
-    <div class="progress"><i id="prog"></i></div>
   </div>
+  <div class="caption"><div class="wrap"><span dir="ltr">Tomodachi Exhibition — Jeddah</span></div></div>
 </section>
 
 <div class="ticker" aria-hidden="true">
@@ -759,31 +749,9 @@ document.documentElement.classList.replace("nojs","js");
   /* ---- ticker duplicate ---- */
   const t = document.getElementById('ticker'); t.innerHTML += t.innerHTML;
 
-  /* ---- hero scroll film ---- */
+  /* ---- hero ---- */
   const film = document.querySelector('.film');
-  const frames = [...film.querySelectorAll('.frame')];
-  const cap = document.getElementById('cap'), counter = document.getElementById('counter'), prog = document.getElementById('prog');
-  const n = frames.length;
-  const cssFilm = CSS.supports('animation-timeline: view()');
   requestAnimationFrame(() => film.classList.add('ready'));
-  let last = -1;
-  function tickFilm(){
-    const rect = film.getBoundingClientRect();
-    const total = film.offsetHeight - innerHeight;
-    const p = Math.min(1, Math.max(0, -rect.top / total));
-    const pos = p * (n - 1);
-    if (!cssFilm) frames.forEach((f, i) => {
-      const d = Math.abs(pos - i);
-      const o = Math.min(1, Math.max(0, 1.35 - d * 1.35)); // crossfade
-      f.style.opacity = o;
-      f.style.zIndex = Math.round(o * 10);
-      const s = 1 + (i - pos) * 0.04;          // gentle kenburns
-      f.firstElementChild.style.transform = `scale(${Math.max(1, s + 0.08)})`;
-    });
-    const idx = Math.min(n - 1, Math.max(0, Math.round(pos) || 0));
-    if (idx !== last) { last = idx; cap.textContent = frames[idx].dataset.cap; counter.textContent = String(idx+1).padStart(2,'0') + ' / ' + String(n).padStart(2,'0'); }
-    if (!cssFilm) prog.style.width = (p * 100) + '%';
-  }
 
   /* ---- dept parallax ---- */
   const plx = [...document.querySelectorAll('[data-plx]')];
@@ -802,7 +770,7 @@ document.documentElement.classList.replace("nojs","js");
     const top = film.getBoundingClientRect().top;
     if (top === lastTop) return; lastTop = top;
     nav.classList.toggle('solid', top < -40);
-    if (!reduce) { tickFilm(); if (!touch) tickPlx(); }
+    if (!reduce && !touch) tickPlx();
   }
   (function loop(){ onScroll(); requestAnimationFrame(loop); })();
   document.addEventListener('scroll', onScroll, {passive:true, capture:true});
