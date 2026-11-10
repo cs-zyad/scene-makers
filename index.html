@@ -157,32 +157,77 @@ p.lead{font-size:clamp(17px,1.5vw,20px);max-width:62ch;color:var(--muted)}
 .dept li{padding:9px 16px;border:1px solid rgba(255,255,255,.22);border-radius:999px;font-size:15px;background:rgba(9,32,63,.5);backdrop-filter:blur(6px)}
 @media(max-width:860px){.dept{grid-template-columns:1fr;min-height:auto}.dept .bg img{height:100%;transform:none!important}.dept .text{padding:64px var(--gutter) 56px}.dept ul{max-width:none}.dept .bg::after{background:linear-gradient(0deg,rgba(9,32,63,.97) 0%,rgba(9,32,63,.85) 60%,rgba(9,32,63,.45) 100%)}}
 
-/* ---------- الأعمال ---------- */
+/* ---------- الأعمال: فهرس مشاريع تحريري ---------- */
 .works{padding:clamp(80px,10vw,140px) 0}
-.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:36px}
-.filters button{padding:10px 20px;border-radius:999px;border:1px solid var(--line);color:var(--muted);font-weight:500;font-size:15px;transition:.25s}
+.works-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:clamp(40px,6vw,80px)}
+.works-head .rule{margin-bottom:0}
+.filters{display:flex;gap:8px;flex-wrap:wrap}
+.filters button{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:999px;border:1px solid var(--line);color:var(--muted);font-weight:500;font-size:15px;transition:.25s}
+.filters button i{font-style:normal;font-family:var(--en);font-size:11.5px;min-width:22px;height:22px;display:grid;place-items:center;border-radius:999px;background:rgba(255,255,255,.08)}
 .filters button:hover{color:#fff;border-color:rgba(255,255,255,.3)}
 .filters button.on{background:#fff;color:var(--navy-deep);border-color:#fff;font-weight:800}
-.gallery{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-flow:dense;gap:16px}
-.work{position:relative;aspect-ratio:3/2;border-radius:16px;overflow:hidden;background:var(--navy-deep);cursor:pointer;transition:opacity .4s,transform .4s var(--ease)}
-.work.feature{grid-column:span 2;grid-row:span 2;aspect-ratio:3/2}
-.work.wide{grid-column:span 2;aspect-ratio:3/1}
-.work.tall{grid-row:span 2;aspect-ratio:auto}
-.work img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
-.work:hover img{transform:scale(1.05)}
-.work .info{position:absolute;inset-inline:0;bottom:0;display:flex;flex-direction:column;gap:2px;padding:18px 20px 16px;background:linear-gradient(0deg,rgba(6,21,48,.94) 12%,rgba(6,21,48,.72) 52%,transparent 100%);transition:padding-bottom .35s var(--ease)}
-.work:hover .info,.work:focus-within .info{padding-bottom:22px}
-.work .info b{font-size:clamp(15px,1.4vw,18px);color:#fff;font-weight:800;line-height:1.35}
-.work .info small{font-size:12.5px;color:var(--gold-light);letter-spacing:.01em}
-.work::after{content:"";position:absolute;inset:0;border-radius:16px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08);transition:box-shadow .35s;pointer-events:none}
-.work:hover::after{box-shadow:inset 0 0 0 1px rgba(217,185,58,.55)}
-.work.hide{display:none}
-.work .play{position:absolute;top:16px;inset-inline-start:16px;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.14);backdrop-filter:blur(8px);display:grid;place-items:center;border:1px solid rgba(255,255,255,.3);transition:background .3s,transform .3s var(--ease)}
-.work:hover .play{background:var(--gold);transform:scale(1.08)}
-.work:hover .play svg{fill:var(--navy-deep)}
-.work .play svg{width:16px;height:16px;fill:#fff;margin-inline-end:-2px;transition:fill .3s}
-@media(max-width:900px){.gallery{grid-template-columns:repeat(2,1fr)}.work.feature{grid-row:span 1}.work.feature,.work.wide{grid-column:span 2}.work.wide{aspect-ratio:12/5}.work.tall{grid-row:span 1;aspect-ratio:3/4}}
-@media(max-width:560px){.gallery{grid-template-columns:repeat(2,1fr);gap:10px}.work{grid-row:span 1;aspect-ratio:4/3;border-radius:13px}.work::after{border-radius:13px}.work.feature,.work.wide{grid-column:span 2;grid-row:span 1}.work.feature{aspect-ratio:3/2}.work.wide{aspect-ratio:12/5}.work.tall{grid-row:span 1;aspect-ratio:3/4}.work .info{padding:20px 11px 9px;gap:1px;background:linear-gradient(0deg,rgba(6,21,48,.96) 18%,rgba(6,21,48,.7) 62%,transparent 100%)}.work .info b{font-size:12.5px;line-height:1.3}.work .info small{font-size:10.5px}.work.feature .info b,.work.wide .info b{font-size:15px}.work.feature .info small,.work.wide .info small{font-size:11.5px}.filters button{padding:8px 14px;font-size:14px}.names{grid-template-columns:1fr 1fr}.names li{font-size:14px;padding:11px 12px}.team .hero{aspect-ratio:4/3}.contact h2.big{font-size:56px}.clients .row{gap:8px 22px;padding:22px 0}.clients .row span{font-size:16px}}
+.filters button.on i{background:var(--navy-deep);color:#fff}
+.showcase{display:grid;grid-template-columns:minmax(240px,300px) minmax(0,1fr);gap:clamp(24px,3vw,44px);height:clamp(520px,calc(100svh - 300px),700px)}
+/* قائمة المشاريع */
+.proj-nav{display:flex;flex-direction:column;overflow-y:auto;scrollbar-width:none;border-inline-start:1px solid var(--line)}
+.proj-nav::-webkit-scrollbar{display:none}
+.proj-nav button{position:relative;display:flex;align-items:center;gap:14px;padding:11px 18px;text-align:start;color:var(--muted);transition:color .25s,background .25s;flex:1 1 0;min-height:48px}
+.proj-nav button::before{content:"";position:absolute;inset-inline-start:-1px;top:18%;bottom:18%;width:2px;background:var(--gold);transform:scaleY(0);transition:transform .35s var(--ease)}
+.proj-nav button:hover{color:#fff;background:rgba(255,255,255,.03)}
+.proj-nav button.on{color:#fff;background:linear-gradient(90deg,transparent,rgba(187,155,21,.10))}
+.proj-nav button.on::before{transform:scaleY(1)}
+.proj-nav .n{font-family:var(--en);font-size:13px;font-weight:700;color:rgba(217,185,58,.55);letter-spacing:.06em;flex:none}
+.proj-nav button.on .n{color:var(--gold-light)}
+.proj-nav .nm{display:flex;flex-direction:column;min-width:0}
+.proj-nav .nm b{font-size:15.5px;font-weight:800;line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.proj-nav .nm small{font-family:var(--en);font-size:10px;letter-spacing:.16em;color:var(--muted);opacity:.8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.proj-nav button.hide{display:none}
+/* المسرح: مشروع واحد ظاهر في كل مرة */
+.proj-stage{position:relative;min-width:0}
+.proj{position:absolute;inset:0;display:grid;grid-template-rows:minmax(0,1fr) auto;gap:22px;opacity:0;visibility:hidden;transition:opacity .5s var(--ease),visibility 0s .5s}
+.proj.on{opacity:1;visibility:visible;transition:opacity .5s var(--ease),visibility 0s}
+.proj-media{grid-row:1;display:grid;gap:clamp(10px,1.4vw,18px);min-height:0}
+.proj-media.pp{grid-template-columns:1fr 1fr}
+.proj-media.ll{grid-template-columns:1.45fr 1fr}
+.shot{position:relative;margin:0;border-radius:18px;overflow:hidden;background:var(--navy-deep);cursor:zoom-in;min-height:0;box-shadow:0 30px 60px -34px rgba(0,0,0,.75)}
+.shot img{width:100%;height:100%;object-fit:cover;transform:scale(1.06);transition:transform 1.2s var(--ease)}
+.proj.on .shot img{transform:scale(1)}
+.proj.on .shot:hover img,.proj.on .shot:focus-visible img{transform:scale(1.035)}
+.shot::after{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08);transition:box-shadow .35s;pointer-events:none}
+.shot:hover::after{box-shadow:inset 0 0 0 1px rgba(217,185,58,.6)}
+.proj-info{grid-row:2;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:8px 28px}
+.proj-info .client{grid-column:1;font-family:var(--en);font-size:11.5px;letter-spacing:.26em;color:var(--gold)}
+.proj-info h3{grid-column:1;font-size:clamp(22px,2.3vw,32px);font-weight:900;color:#fff;line-height:1.2}
+.proj-info p{grid-column:1;color:var(--muted);font-size:15px;max-width:62ch}
+.proj-info .acts{grid-column:2;grid-row:1/4;display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.acts a,.acts button{display:inline-flex;align-items:center;gap:8px;padding:10px 17px;border-radius:999px;font-weight:700;font-size:14px;border:1px solid rgba(255,255,255,.22);color:#fff;white-space:nowrap;transition:background .25s,border-color .25s,color .25s,transform .25s var(--ease)}
+.acts svg{width:16px;height:16px;fill:currentColor;flex:none}
+.acts a:hover,.acts button:hover{border-color:var(--gold);color:var(--gold-light);transform:translateY(-1px)}
+.acts .primary{background:var(--gold);border-color:var(--gold);color:var(--navy-deep)}
+.acts .primary:hover{background:var(--gold-light);border-color:var(--gold-light);color:var(--navy-deep)}
+.acts .ghost{font-family:var(--en);font-weight:500;color:var(--muted);border-color:transparent;padding-inline:10px}
+.proj-stage .pager{position:absolute;top:14px;inset-inline-end:14px;z-index:3;display:flex;gap:6px}
+.proj-stage .pager button{width:40px;height:40px;border-radius:50%;background:rgba(6,21,48,.6);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:#fff;font-size:20px;display:grid;place-items:center;transition:background .25s}
+.proj-stage .pager button:hover{background:var(--gold);color:var(--navy-deep)}
+@media(max-width:900px){
+  .showcase{grid-template-columns:1fr;height:auto;gap:18px}
+  .proj-nav{flex-direction:row;border-inline-start:0;border-bottom:1px solid var(--line);overflow-x:auto;margin-inline:calc(-1 * var(--gutter));padding-inline:var(--gutter)}
+  .proj-nav button{flex:none;padding:10px 14px}
+  .proj-nav button::before{inset-inline:14%;top:auto;bottom:-1px;width:auto;height:2px;transform:scaleX(0)}
+  .proj-nav button.on::before{transform:scaleX(1)}
+  .proj-nav .nm small{display:none}
+  .proj-stage{display:grid}
+  .proj{position:relative;inset:auto;grid-area:1/1;grid-template-rows:auto auto}
+  .proj-media{height:min(108vw,560px)}
+  .proj-info{grid-template-columns:1fr}
+  .proj-info .acts{grid-column:1;grid-row:auto;justify-content:flex-start;margin-top:8px}
+}
+@media(max-width:560px){
+  .shot{border-radius:13px}
+  .proj-media.ll{grid-template-columns:1fr;grid-template-rows:1.3fr 1fr}
+  .proj-media{height:min(118vw,520px)}
+  .acts a,.acts button{padding:9px 14px;font-size:13.5px}
+}
 
 /* ---------- العملاء ---------- */
 .clients{padding:0 0 clamp(70px,8vw,120px)}
@@ -255,8 +300,7 @@ footer p{font-size:14px;color:var(--muted)}
 .lb .head{position:absolute;top:26px;inset-inline:88px;display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap}
 .lb .head .ttl{font-weight:800;color:#fff;font-size:clamp(15px,1.7vw,19px);text-align:center}
 .lb .head .num{font-family:var(--en);font-size:13px;letter-spacing:.14em;color:var(--gold);flex:none}
-.work .count{position:absolute;top:14px;inset-inline-end:14px;z-index:2;padding:5px 11px;border-radius:999px;font-size:11.5px;font-weight:700;color:#fff;background:rgba(6,21,48,.6);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.22);pointer-events:none}
-@media(max-width:700px){.lb .head{inset-inline:68px;top:18px}.lb .arr{width:44px;height:44px}.lb .prev{inset-inline-end:10px}.lb .next{inset-inline-start:10px}.lb img{max-width:92vw;max-height:60vh}.lb .cap{bottom:16px;gap:10px;font-size:13px}.lb .drive{padding:8px 15px;font-size:13px}.work .count{top:10px;inset-inline-end:10px;padding:4px 9px;font-size:10.5px}}
+@media(max-width:700px){.lb .head{inset-inline:68px;top:18px}.lb .arr{width:44px;height:44px}.lb .prev{inset-inline-end:10px}.lb .next{inset-inline-start:10px}.lb img{max-width:92vw;max-height:60vh}.lb .cap{bottom:16px;gap:10px;font-size:13px}.lb .drive{padding:8px 15px;font-size:13px}}
 
 /* ---------- reveal (خفيف: مرة واحدة فقط عند الدخول) ---------- */
 .js .rv{opacity:0;transform:translateY(26px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
@@ -447,37 +491,144 @@ footer p{font-size:14px;color:var(--muted)}
 <!-- ===== الأعمال ===== -->
 <section class="works" id="works">
   <div class="wrap">
-    <div class="rv">
-      <div class="mark">
-        <svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="18" fill="#BB9B15"/><circle cx="20" cy="20" r="15" fill="none" stroke="#fff" stroke-width="1.4"/><path d="M20 8 l6 10 h-12z M32 20 l-10 6 v-12z M20 32 l-6-10 h12z M8 20 l10-6 v12z" fill="#fff" opacity=".9"/><circle cx="20" cy="20" r="4.5" fill="#BB9B15"/></svg>
-        <div><h2>أعمالنا</h2><div class="sub">SELECTED WORK</div></div>
+    <div class="rv works-head">
+      <div>
+        <div class="mark">
+          <svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="18" fill="#BB9B15"/><circle cx="20" cy="20" r="15" fill="none" stroke="#fff" stroke-width="1.4"/><path d="M20 8 l6 10 h-12z M32 20 l-10 6 v-12z M20 32 l-6-10 h12z M8 20 l10-6 v12z" fill="#fff" opacity=".9"/><circle cx="20" cy="20" r="4.5" fill="#BB9B15"/></svg>
+          <div><h2>أعمالنا</h2><div class="sub">SELECTED PROJECTS</div></div>
+        </div>
+        <div class="rule"></div>
       </div>
-      <div class="rule"></div>
-      <div class="filters" role="tablist">
-        <button class="on" data-f="all">الكل</button>
-        <button data-f="design">تصميم</button>
-        <button data-f="photo">تصوير</button>
-        <button data-f="video">مونتاج وفيديو</button>
+      <div class="filters" role="tablist" aria-label="تصفية الأعمال">
+        <button class="on" data-f="all">الكل <i>9</i></button>
+        <button data-f="design">تصميم <i>4</i></button>
+        <button data-f="photo">تصوير <i>2</i></button>
+        <button data-f="video">مونتاج وفيديو <i>8</i></button>
       </div>
     </div>
 
-    <div class="gallery" id="gallery">
-      <figure data-album="tomodachi-photo" class="work feature" data-t="photo" data-cap="تغطية عرض الساموراي — معرض توموداتشي"><img src="img/samurai.jpg" alt="عرض ساموراي على المسرح"><figcaption class="info"><b>عرض الساموراي</b><small>تصوير فعاليات — توموداتشي</small></figcaption></figure>
-      <figure data-album="tomodachi-design" class="work" data-t="design" data-cap="إنفوجرافيك وبوسترات معرض توموداتشي"><img src="img/infographic.jpg" alt="تصاميم إنفوجرافيك"><figcaption class="info"><b>إنفوجرافيك توموداتشي</b><small>تصميم</small></figcaption></figure>
-      <figure data-album="tomodachi-photo" class="work" data-t="photo" data-cap="راقصات اليوساكوي — توموداتشي"><img src="img/dancers.jpg" alt="راقصات يابانيات"><figcaption class="info"><b>راقصات اليوساكوي</b><small>تصوير فعاليات</small></figcaption></figure>
-      <figure data-album="tomodachi-design" class="work wide" data-t="design" data-cap="بوسترات Tatakae — زون التحدي"><img src="img/posters.jpg" alt="بوسترات"><figcaption class="info"><b>بوسترات Tatakae</b><small>تصميم — سوشال ميديا</small></figcaption></figure>
-      <figure data-album="djpainter" class="work" data-t="photo" data-cap="DJ Painter — عرض حي"><img src="img/djpainter.jpg" alt="فنان على المسرح"><figcaption class="info"><b>DJ Painter</b><small>تصوير فعاليات</small></figcaption></figure>
-      <figure data-album="akkas" class="work tall" data-t="design" data-cap="أوتاد المحمدية — إعلان عقاري لشركة العكاس"><img src="img/works/akkas-awtad.jpg" alt="إعلان مشروع أوتاد المحمدية" loading="lazy"><figcaption class="info"><b>أوتاد المحمدية</b><small>تصميم إعلاني — العكاس العقارية</small></figcaption></figure>
-      <figure data-album="noorpath" class="work" data-t="design" data-cap="مطبوعات هوية Noor Path"><img src="img/prints.jpg" alt="مطبوعات نور باث"><figcaption class="info"><b>مطبوعات Noor Path</b><small>هوية بصرية ومطبوعات</small></figcaption></figure>
-      <figure data-album="tomodachi-design" class="work wide" data-t="design" data-cap="كاروسيل ورش توموداتشي"><img src="img/carousel.jpg" alt="تصاميم كاروسيل"><figcaption class="info"><b>كاروسيل الورش اليابانية</b><small>تصميم — كاروسيل</small></figcaption></figure>
-      <figure data-album="tomodachi-photo" class="work" data-t="photo" data-cap="عازفة الناي — عرض موسيقي"><img src="img/flute.jpg" alt="عازفة ناي ياباني"><figcaption class="info"><b>عرض موسيقي</b><small>تصوير</small></figcaption></figure>
-      <figure data-album="tomodachi-photo" class="work" data-t="photo" data-cap="غيشا — كواليس العرض"><img src="img/geisha.jpg" alt="غيشا على المسرح"><figcaption class="info"><b>الغيشا</b><small>تصوير</small></figcaption></figure>
-      <figure data-album="conference" class="work" data-t="photo" data-cap="تغطية مؤتمر — قاعة فندقية"><img src="img/hall.jpg" alt="تغطية مؤتمر"><figcaption class="info"><b>تغطية مؤتمر</b><small>تصوير مؤسسي</small></figcaption></figure>
-
-      <a class="work" data-t="video" href="https://drive.google.com/file/d/1nMWibpFFvOQOKeQzxGdR0vIXbg_YrFdN/view" target="_blank" rel="noopener"><img src="img/crowd.jpg" alt=""><span class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span><span class="info"><b>برومو الفريق — توموداتشي</b><small>مونتاج فيديو</small></span></a>
-      <a class="work" data-t="video" href="https://drive.google.com/file/d/1Je8HCIV9rpkO4_I06N13wuNuFWIQBRFM/view" target="_blank" rel="noopener"><img src="img/kabuki.jpg" alt=""><span class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span><span class="info"><b>برومو مهرجان عفت</b><small>مونتاج فيديو</small></span></a>
-      <a class="work" data-t="video" href="https://drive.google.com/file/d/1C8A4cQx5ncx6vI-_rR56_Gp9Vzf3HV2U/view" target="_blank" rel="noopener"><img src="img/editing.jpg" alt=""><span class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span><span class="info"><b>برومو ميتسوبيشي</b><small>مونتاج فيديو</small></span></a>
-      <a class="work" data-t="video" href="https://drive.google.com/file/d/1hCsTdXSXi2me9OYZAIev-kdN7ddoFEbs/view" target="_blank" rel="noopener"><img src="img/closing.jpg" alt=""><span class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span><span class="info"><b>برومو الكوسبلايرز</b><small>مونتاج فيديو</small></span></a>
+    <div class="showcase rv">
+      <nav class="proj-nav" role="tablist" aria-label="المشاريع">
+        <button role="tab" data-i="0" data-t="design video" class="on" aria-selected="true"><span class="n">01</span><span class="nm"><b>معرض توموداتشي</b><small>TOMODACHI EXHIBITION</small></span></button>
+        <button role="tab" data-i="1" data-t="design video" aria-selected="false"><span class="n">02</span><span class="nm"><b>كوادرا للذكاء الاصطناعي</b><small>QUADRA AI</small></span></button>
+        <button role="tab" data-i="2" data-t="video" aria-selected="false"><span class="n">03</span><span class="nm"><b>ميتسوبيشي موتورز</b><small>MITSUBISHI MOTORS</small></span></button>
+        <button role="tab" data-i="3" data-t="video photo" aria-selected="false"><span class="n">04</span><span class="nm"><b>مهرجان عفت السينمائي</b><small>EFFAT FILM FESTIVAL</small></span></button>
+        <button role="tab" data-i="4" data-t="design video" aria-selected="false"><span class="n">05</span><span class="nm"><b>العكاس العقارية</b><small>ALAKKAS REAL ESTATE</small></span></button>
+        <button role="tab" data-i="5" data-t="design video" aria-selected="false"><span class="n">06</span><span class="nm"><b>نور باث</b><small>NOOR PATH</small></span></button>
+        <button role="tab" data-i="6" data-t="video" aria-selected="false"><span class="n">07</span><span class="nm"><b>أكاديمية اللاعب الذهبي</b><small>GOLDEN PLAYER ACADEMY</small></span></button>
+        <button role="tab" data-i="7" data-t="video" aria-selected="false"><span class="n">08</span><span class="nm"><b>أكاديمية 360</b><small>360 ACADEMY</small></span></button>
+        <button role="tab" data-i="8" data-t="photo" aria-selected="false"><span class="n">09</span><span class="nm"><b>تصوير الفعاليات</b><small>EVENT PHOTOGRAPHY</small></span></button>
+      </nav>
+      <div class="proj-stage" id="projects">
+      <article class="proj on" role="tabpanel" data-t="design video" data-title="معرض توموداتشي" data-drive="1EoSDrWfUfiOqSpZvMPbEV-mgN1UiJv1i">
+        <div class="proj-info">
+          <div class="client">TOMODACHI EXHIBITION</div>
+          <h3>معرض توموداتشي</h3>
+          <p>معرض الثقافة اليابانية في جدة: صمّمنا بوسترات الحملة ومحتوى السوشال، وأنتجنا البرومو الرسمي للفريق.</p>
+          <div class="acts"><button class="primary" data-open><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v14H4zM6 7v8l4-4 3 3 2-2 3 3V7z"/></svg>عرض الصور</button><a href="https://drive.google.com/file/d/1nMWibpFFvOQOKeQzxGdR0vIXbg_YrFdN/view" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>شاهد الفيديو</a><a class="ghost" href="https://drive.google.com/drive/folders/1EoSDrWfUfiOqSpZvMPbEV-mgN1UiJv1i" target="_blank" rel="noopener" aria-label="مجلد معرض توموداتشي في Drive"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.7 3h8.6l5.2 9-4.3 7.5H5.8L1.5 12zm.9 1.6L3.4 12h4.3l4.3-7.4zm6.8 0h-2.6L8.5 12l2.6 4.5h5.2l2.6-4.5z"/></svg>Drive</a></div>
+        </div>
+        <div class="proj-media pp">
+          <figure class="shot" data-cap="بوستر حملة التسجيل — انطلق معنا في توموداتشي" tabindex="0"><img src="img/projects/tomodachi-1.jpg" alt="بوستر حملة التسجيل — انطلق معنا في توموداتشي" decoding="async"></figure>
+          <figure class="shot" data-cap="بطاقة صعود — دعوة لرحلة اكتشاف اليابان" tabindex="0"><img src="img/projects/tomodachi-2.jpg" alt="بطاقة صعود — دعوة لرحلة اكتشاف اليابان" decoding="async"></figure>
+        </div>
+      </article>
+      <article class="proj" role="tabpanel" data-t="design video" data-title="كوادرا للذكاء الاصطناعي" data-drive="1XVzScDKg6d_J377Jpv32X1jxWvGHtj_3">
+        <div class="proj-info">
+          <div class="client">QUADRA AI</div>
+          <h3>كوادرا للذكاء الاصطناعي</h3>
+          <p>سلسلة تصاميم وموشن جرافيك لمنصة Quadra AI التي تربط الجهات بمطوّري حلول الذكاء الاصطناعي.</p>
+          <div class="acts"><button class="primary" data-open><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v14H4zM6 7v8l4-4 3 3 2-2 3 3V7z"/></svg>عرض الصور</button><a href="https://drive.google.com/file/d/15W4V6Bspt8GvlzUu2TzKlKrOIh14Vp_j/view" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>شاهد الفيديو</a><a class="ghost" href="https://drive.google.com/drive/folders/1XVzScDKg6d_J377Jpv32X1jxWvGHtj_3" target="_blank" rel="noopener" aria-label="مجلد كوادرا للذكاء الاصطناعي في Drive"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.7 3h8.6l5.2 9-4.3 7.5H5.8L1.5 12zm.9 1.6L3.4 12h4.3l4.3-7.4zm6.8 0h-2.6L8.5 12l2.6 4.5h5.2l2.6-4.5z"/></svg>Drive</a></div>
+        </div>
+        <div class="proj-media pp">
+          <figure class="shot" data-cap="Quadra AI — جسر التقنية بين المؤسسات والمطوّرين" tabindex="0"><img src="img/projects/quadra-1.jpg" alt="Quadra AI — جسر التقنية بين المؤسسات والمطوّرين" loading="lazy" decoding="async"></figure>
+          <figure class="shot" data-cap="مطوّر؟ مكانك في شبكة Quadra AI" tabindex="0"><img src="img/projects/quadra-2.jpg" alt="مطوّر؟ مكانك في شبكة Quadra AI" loading="lazy" decoding="async"></figure>
+        </div>
+      </article>
+      <article class="proj" role="tabpanel" data-t="video" data-title="ميتسوبيشي موتورز" data-drive="1MycHy5rqqYaZcgk1HXA-A0R2kVcfrxFp">
+        <div class="proj-info">
+          <div class="client">MITSUBISHI MOTORS</div>
+          <h3>ميتسوبيشي موتورز</h3>
+          <p>برومو تفعيل ميتسوبيشي في معرض توموداتشي تحت عنوان «صمّم بروح اليابان على سيارات ميتسوبيشي».</p>
+          <div class="acts"><button class="primary" data-open><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v14H4zM6 7v8l4-4 3 3 2-2 3 3V7z"/></svg>عرض الصور</button><a href="https://drive.google.com/file/d/1C8A4cQx5ncx6vI-_rR56_Gp9Vzf3HV2U/view" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>شاهد الفيديو</a><a class="ghost" href="https://drive.google.com/drive/folders/1MycHy5rqqYaZcgk1HXA-A0R2kVcfrxFp" target="_blank" rel="noopener" aria-label="مجلد ميتسوبيشي موتورز في Drive"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.7 3h8.6l5.2 9-4.3 7.5H5.8L1.5 12zm.9 1.6L3.4 12h4.3l4.3-7.4zm6.8 0h-2.6L8.5 12l2.6 4.5h5.2l2.6-4.5z"/></svg>Drive</a></div>
+        </div>
+        <div class="proj-media ll">
+          <figure class="shot" data-cap="لقطة من البرومو — Outlander" tabindex="0"><img src="img/projects/mitsubishi-1.jpg" alt="لقطة من البرومو — Outlander" loading="lazy" decoding="async"></figure>
+          <figure class="shot" data-cap="منصة ميتسوبيشي داخل المعرض" tabindex="0"><img src="img/projects/mitsubishi-2.jpg" alt="منصة ميتسوبيشي داخل المعرض" loading="lazy" decoding="async"></figure>
+        </div>
+      </article>
+      <article class="proj" role="tabpanel" data-t="video photo" data-title="مهرجان عفت السينمائي" data-drive="1B7mJ2tfJByO64nIG1bc80Lga6MtcSWUY">
+        <div class="proj-info">
+          <div class="client">EFFAT FILM FESTIVAL</div>
+          <h3>مهرجان عفت السينمائي</h3>
+          <p>تغطية وبرومو مهرجان عفت السينمائي الدولي لأفلام الطلاب في دورته الثالثة عشرة.</p>
+          <div class="acts"><button class="primary" data-open><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v14H4zM6 7v8l4-4 3 3 2-2 3 3V7z"/></svg>عرض الصور</button><a href="https://drive.google.com/file/d/1Je8HCIV9rpkO4_I06N13wuNuFWIQBRFM/view" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>شاهد الفيديو</a><a class="ghost" href="https://drive.google.com/drive/folders/1B7mJ2tfJByO64nIG1bc80Lga6MtcSWUY" target="_blank" rel="noopener" aria-label="مجلد مهرجان عفت السينمائي في Drive"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.7 3h8.6l5.2 9-4.3 7.5H5.8L1.5 12zm.9 1.6L3.4 12h4.3l4.3-7.4zm6.8 0h-2.6L8.5 12l2.6 4.5h5.2l2.6-4.5z"/></svg>Drive</a></div>
+        </div>
+        <div class="proj-media ll">
+          <figure class="shot" data-cap="صورة جماعية على السجادة الحمراء" tabindex="0"><img src="img/projects/effat-1.jpg" alt="صورة جماعية على السجادة الحمراء" loading="lazy" decoding="async"></figure>
+          <figure class="shot" data-cap="لحظة التكريم في المهرجان" tabindex="0"><img src="img/projects/effat-2.jpg" alt="لحظة التكريم في المهرجان" loading="lazy" decoding="async"></figure>
+        </div>
+      </article>
+      <article class="proj" role="tabpanel" data-t="design video" data-title="العكاس العقارية" data-drive="1Y2IwdNP5DfsTst2IhyZ9iJCPaI_jwTwC">
+        <div class="proj-info">
+          <div class="client">ALAKKAS REAL ESTATE</div>
+          <h3>العكاس العقارية</h3>
+          <p>إعلانات مشروع أوتاد المحمدية السكني لشركة العكاس للتسويق والخدمات العقارية، مع فيديو تسويقي للمشروع.</p>
+          <div class="acts"><button class="primary" data-open><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v14H4zM6 7v8l4-4 3 3 2-2 3 3V7z"/></svg>عرض الصور</button><a href="https://drive.google.com/file/d/1w0jlMl954B2hgvD4cRGi8-LHpDKmuk7w/view" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>شاهد الفيديو</a><a class="ghost" href="https://drive.google.com/drive/folders/1Y2IwdNP5DfsTst2IhyZ9iJCPaI_jwTwC" target="_blank" rel="noopener" aria-label="مجلد العكاس العقارية في Drive"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.7 3h8.6l5.2 9-4.3 7.5H5.8L1.5 12zm.9 1.6L3.4 12h4.3l4.3-7.4zm6.8 0h-2.6L8.5 12l2.6 4.5h5.2l2.6-4.5z"/></svg>Drive</a></div>
+        </div>
+        <div class="proj-media pp">
+          <figure class="shot" data-cap="إعلان أوتاد المحمدية — الواجهة" tabindex="0"><img src="img/projects/akkas-1.jpg" alt="إعلان أوتاد المحمدية — الواجهة" loading="lazy" decoding="async"></figure>
+          <figure class="shot" data-cap="إعلان أوتاد المحمدية — المخطط والسعر" tabindex="0"><img src="img/projects/akkas-2.jpg" alt="إعلان أوتاد المحمدية — المخطط والسعر" loading="lazy" decoding="async"></figure>
+        </div>
+      </article>
+      <article class="proj" role="tabpanel" data-t="design video" data-title="نور باث" data-drive="1Lid63ESmAEg920u10ADniQ5eR_hZs_yc">
+        <div class="proj-info">
+          <div class="client">NOOR PATH</div>
+          <h3>نور باث</h3>
+          <p>تطبيقات هوية Noor Path على المطبوعات والهدايا بشعار «عالمك أصبح أكبر».</p>
+          <div class="acts"><button class="primary" data-open><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v14H4zM6 7v8l4-4 3 3 2-2 3 3V7z"/></svg>عرض الصور</button><a href="https://drive.google.com/file/d/1rPedqkrrexK8IVq8KvSHXe0e23lEWjYD/view" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>شاهد الفيديو</a><a class="ghost" href="https://drive.google.com/drive/folders/1Lid63ESmAEg920u10ADniQ5eR_hZs_yc" target="_blank" rel="noopener" aria-label="مجلد نور باث في Drive"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.7 3h8.6l5.2 9-4.3 7.5H5.8L1.5 12zm.9 1.6L3.4 12h4.3l4.3-7.4zm6.8 0h-2.6L8.5 12l2.6 4.5h5.2l2.6-4.5z"/></svg>Drive</a></div>
+        </div>
+        <div class="proj-media pp">
+          <figure class="shot" data-cap="دفتر بهوية Noor Path" tabindex="0"><img src="img/projects/noorpath-1.jpg" alt="دفتر بهوية Noor Path" loading="lazy" decoding="async"></figure>
+          <figure class="shot" data-cap="حقيبة قماشية بهوية Noor Path" tabindex="0"><img src="img/projects/noorpath-2.jpg" alt="حقيبة قماشية بهوية Noor Path" loading="lazy" decoding="async"></figure>
+        </div>
+      </article>
+      <article class="proj" role="tabpanel" data-t="video" data-title="أكاديمية اللاعب الذهبي" data-drive="1tL6BSDTOjLJxHLTWkIkEU0JDRYn8jDwI">
+        <div class="proj-info">
+          <div class="client">GOLDEN PLAYER ACADEMY</div>
+          <h3>أكاديمية اللاعب الذهبي</h3>
+          <p>فيديوهات قصيرة للأكاديمية تلتقط حماس التدريب داخل الملعب.</p>
+          <div class="acts"><button class="primary" data-open><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v14H4zM6 7v8l4-4 3 3 2-2 3 3V7z"/></svg>عرض الصور</button><a href="https://drive.google.com/file/d/1hNmaRZPXcdDoylCySDnO0VA2vQ-p77aR/view" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>شاهد الفيديو</a><a class="ghost" href="https://drive.google.com/drive/folders/1tL6BSDTOjLJxHLTWkIkEU0JDRYn8jDwI" target="_blank" rel="noopener" aria-label="مجلد أكاديمية اللاعب الذهبي في Drive"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.7 3h8.6l5.2 9-4.3 7.5H5.8L1.5 12zm.9 1.6L3.4 12h4.3l4.3-7.4zm6.8 0h-2.6L8.5 12l2.6 4.5h5.2l2.6-4.5z"/></svg>Drive</a></div>
+        </div>
+        <div class="proj-media pp">
+          <figure class="shot" data-cap="لقطة من فيديو الأكاديمية" tabindex="0"><img src="img/projects/goldenboy-1.jpg" alt="لقطة من فيديو الأكاديمية" loading="lazy" decoding="async"></figure>
+          <figure class="shot" data-cap="تدريب داخل الملعب" tabindex="0"><img src="img/projects/goldenboy-2.jpg" alt="تدريب داخل الملعب" loading="lazy" decoding="async"></figure>
+        </div>
+      </article>
+      <article class="proj" role="tabpanel" data-t="video" data-title="أكاديمية 360" data-drive="16xBnyBGY8eSeHfCEmphj0ZZp1o8P-x44">
+        <div class="proj-info">
+          <div class="client">360 ACADEMY</div>
+          <h3>أكاديمية 360</h3>
+          <p>فيديو برنامج «أكاديمية القيادة — رحلة صناعة قائد» يوثّق لقاءات المشاركين وتجربتهم.</p>
+          <div class="acts"><button class="primary" data-open><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v14H4zM6 7v8l4-4 3 3 2-2 3 3V7z"/></svg>عرض الصور</button><a href="https://drive.google.com/file/d/1C1vYfAc53qKNshoA-Pclzo2pLroJ-KGy/view" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>شاهد الفيديو</a><a class="ghost" href="https://drive.google.com/drive/folders/16xBnyBGY8eSeHfCEmphj0ZZp1o8P-x44" target="_blank" rel="noopener" aria-label="مجلد أكاديمية 360 في Drive"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.7 3h8.6l5.2 9-4.3 7.5H5.8L1.5 12zm.9 1.6L3.4 12h4.3l4.3-7.4zm6.8 0h-2.6L8.5 12l2.6 4.5h5.2l2.6-4.5z"/></svg>Drive</a></div>
+        </div>
+        <div class="proj-media ll">
+          <figure class="shot" data-cap="أكاديمية القيادة — رحلة صناعة قائد" tabindex="0"><img src="img/projects/academy360-1.jpg" alt="أكاديمية القيادة — رحلة صناعة قائد" loading="lazy" decoding="async"></figure>
+          <figure class="shot" data-cap="المشاركون خلال البرنامج" tabindex="0"><img src="img/projects/academy360-2.jpg" alt="المشاركون خلال البرنامج" loading="lazy" decoding="async"></figure>
+        </div>
+      </article>
+      <article class="proj" role="tabpanel" data-t="photo" data-title="تصوير الفعاليات" data-drive="1buO4sEmv8bMjOa-mDsas8Xs_fV56aRdj">
+        <div class="proj-info">
+          <div class="client">EVENT PHOTOGRAPHY</div>
+          <h3>تصوير الفعاليات</h3>
+          <p>عدسة الفريق في الملاعب والمسارح والقاعات: تغطيات فوتوغرافية لفعاليات متنوعة.</p>
+          <div class="acts"><button class="primary" data-open><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v14H4zM6 7v8l4-4 3 3 2-2 3 3V7z"/></svg>عرض الصور</button><a class="ghost" href="https://drive.google.com/drive/folders/1buO4sEmv8bMjOa-mDsas8Xs_fV56aRdj" target="_blank" rel="noopener" aria-label="مجلد تصوير الفعاليات في Drive"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.7 3h8.6l5.2 9-4.3 7.5H5.8L1.5 12zm.9 1.6L3.4 12h4.3l4.3-7.4zm6.8 0h-2.6L8.5 12l2.6 4.5h5.2l2.6-4.5z"/></svg>Drive</a></div>
+        </div>
+        <div class="proj-media ll">
+          <figure class="shot" data-cap="تغطية تدريب كرة قدم" tabindex="0"><img src="img/projects/events-1.jpg" alt="تغطية تدريب كرة قدم" loading="lazy" decoding="async"></figure>
+          <figure class="shot" data-cap="عرض حي على المسرح" tabindex="0"><img src="img/projects/events-2.jpg" alt="عرض حي على المسرح" loading="lazy" decoding="async"></figure>
+        </div>
+      </article>
+      </div>
     </div>
   </div>
 </section>
@@ -629,7 +780,7 @@ document.documentElement.classList.replace("nojs","js");
       const s = 1 + (i - pos) * 0.04;          // gentle kenburns
       f.firstElementChild.style.transform = `scale(${Math.max(1, s + 0.08)})`;
     });
-    const idx = Math.round(pos);
+    const idx = Math.min(n - 1, Math.max(0, Math.round(pos) || 0));
     if (idx !== last) { last = idx; cap.textContent = frames[idx].dataset.cap; counter.textContent = String(idx+1).padStart(2,'0') + ' / ' + String(n).padStart(2,'0'); }
     if (!cssFilm) prog.style.width = (p * 100) + '%';
   }
@@ -670,42 +821,43 @@ document.documentElement.classList.replace("nojs","js");
   }), {threshold:.6});
   document.querySelectorAll('[data-count]').forEach(el => co.observe(el));
 
-  /* ---- filters ---- */
-  const works = [...document.querySelectorAll('.work')];
+  /* ---- المشاريع: عرض مشروع واحد في كل مرة ---- */
+  const projs = [...document.querySelectorAll('.proj')];
+  const tabs = [...document.querySelectorAll('.proj-nav button')];
+  const stage = document.getElementById('projects');
+  let active = 0;
+  const select = i => {
+    active = i;
+    projs.forEach((p, k) => p.classList.toggle('on', k === i));
+    tabs.forEach((t, k) => { t.classList.toggle('on', k === i); t.setAttribute('aria-selected', k === i); });
+    // حمّل صور المشروع التالي مسبقًا ليكون التبديل فوريًا
+    const next = projs[(i + 1) % projs.length];
+    next && next.querySelectorAll('img[loading="lazy"]').forEach(img => img.loading = 'eager');
+    const t = tabs[i], nav = t.parentElement;
+    if (nav.scrollWidth > nav.clientWidth) nav.scrollTo({left: t.offsetLeft - nav.clientWidth / 2 + t.offsetWidth / 2, behavior: 'smooth'});
+  };
+  const visible = () => tabs.filter(t => !t.classList.contains('hide')).map(t => +t.dataset.i);
+  const move = d => { const v = visible(); const k = v.indexOf(active); select(v[(k + d + v.length) % v.length]); };
+  tabs.forEach(t => t.addEventListener('click', () => select(+t.dataset.i)));
+  // أسهم التنقل بين المشاريع فوق الصور
+  const pager = document.createElement('div'); pager.className = 'pager';
+  pager.innerHTML = '<button aria-label="المشروع السابق">›</button><button aria-label="المشروع التالي">‹</button>';
+  pager.children[0].onclick = () => move(-1); pager.children[1].onclick = () => move(1);
+  stage.appendChild(pager);
+  document.querySelector('.proj-nav').addEventListener('keydown', e => {
+    if (e.key === 'ArrowDown' || e.key === 'ArrowLeft') { e.preventDefault(); move(1); tabs[active].focus(); }
+    if (e.key === 'ArrowUp' || e.key === 'ArrowRight') { e.preventDefault(); move(-1); tabs[active].focus(); }
+  });
+  // سحب بالإصبع على الصور للتنقل بين المشاريع
+  let sx = null;
+  stage.addEventListener('touchstart', e => sx = e.touches[0].clientX, {passive:true});
+  stage.addEventListener('touchend', e => { if (sx === null) return; const dx = e.changedTouches[0].clientX - sx; sx = null; if (Math.abs(dx) > 50) move(dx > 0 ? 1 : -1); }, {passive:true});
   document.querySelectorAll('.filters button').forEach(b => b.addEventListener('click', () => {
     document.querySelectorAll('.filters button').forEach(x => x.classList.remove('on')); b.classList.add('on');
     const f = b.dataset.f;
-    works.forEach(w => w.classList.toggle('hide', f !== 'all' && w.dataset.t !== f));
+    tabs.forEach(t => t.classList.toggle('hide', f !== 'all' && !t.dataset.t.split(' ').includes(f)));
+    if (tabs[active].classList.contains('hide')) select(visible()[0]);
   }));
-
-  /* ---- الألبومات: كل مشروع مجموعة صور ---- */
-  const ALBUMS = {
-    'tomodachi-photo': { title:'معرض توموداتشي — تغطية مصوّرة', drive:'1EoSDrWfUfiOqSpZvMPbEV-mgN1UiJv1i', shots:[
-      ['img/samurai.jpg','عرض الساموراي على المسرح'],
-      ['img/dancers.jpg','راقصات اليوساكوي'],
-      ['img/geisha.jpg','الغيشا — كواليس العرض'],
-      ['img/flute.jpg','عازفة الناي الياباني'],
-      ['img/kabuki.jpg','عرض الكابوكي'],
-      ['img/crowd.jpg','جمهور المعرض'],
-    ]},
-    'tomodachi-design': { title:'معرض توموداتشي — الهوية والتصاميم', drive:'1EoSDrWfUfiOqSpZvMPbEV-mgN1UiJv1i', shots:[
-      ['img/carousel.jpg','كاروسيل الورش اليابانية'],
-      ['img/infographic.jpg','إنفوجرافيك المعرض'],
-      ['img/posters.jpg','بوسترات Tatakae — زون التحدي'],
-    ]},
-    'akkas':     { title:'العكاس العقارية — أوتاد المحمدية', drive:'1Y2IwdNP5DfsTst2IhyZ9iJCPaI_jwTwC', shots:[
-      ['img/works/akkas-awtad.jpg','إعلان مشروع أوتاد المحمدية'],
-    ]},
-    'noorpath':  { title:'Noor Path — هوية بصرية ومطبوعات', shots:[
-      ['img/prints.jpg','مطبوعات وهوية Noor Path'],
-    ]},
-    'djpainter': { title:'DJ Painter — تغطية عرض حي', shots:[
-      ['img/djpainter.jpg','الفنان على المسرح'],
-    ]},
-    'conference':{ title:'تغطية مؤتمر مؤسسي', shots:[
-      ['img/hall.jpg','القاعة أثناء الجلسة'],
-    ]},
-  };
 
   /* ---- lightbox بألبومات ---- */
   const lb = document.getElementById('lb'), lbimg = document.getElementById('lbimg'),
@@ -721,24 +873,22 @@ document.documentElement.classList.replace("nojs","js");
     lbnum.textContent = shots.length > 1 ? `${cur+1} / ${shots.length}` : '';
     lbarr.forEach(a => a.hidden = shots.length < 2);
   };
-  const show = (albumId, startSrc) => {
-    const al = ALBUMS[albumId]; if (!al) return;
-    shots = al.shots; lbttl.textContent = al.title;
-    lbdrive.hidden = !al.drive;
-    if (al.drive) lbdrive.href = 'https://drive.google.com/drive/folders/' + al.drive;
-    cur = Math.max(0, shots.findIndex(s => startSrc.endsWith(s[0])));
-    render(); lb.classList.add('on'); document.body.style.overflow = 'hidden';
+  const show = (proj, start = 0) => {
+    shots = [...proj.querySelectorAll('.shot')].map(f => [f.querySelector('img').getAttribute('src'), f.dataset.cap]);
+    lbttl.textContent = proj.dataset.title;
+    lbdrive.hidden = !proj.dataset.drive;
+    if (proj.dataset.drive) lbdrive.href = 'https://drive.google.com/drive/folders/' + proj.dataset.drive;
+    cur = start; render(); lb.classList.add('on'); document.body.style.overflow = 'hidden';
   };
   const step = d => { cur = (cur + d + shots.length) % shots.length; render(); };
   const hide = () => { lb.classList.remove('on'); document.body.style.overflow = ''; };
 
-  works.filter(w => w.dataset.album).forEach(w => {
-    const open = () => show(w.dataset.album, w.querySelector('img').getAttribute('src'));
-    w.tabIndex = 0;
-    w.addEventListener('click', open);
-    w.addEventListener('keydown', e => e.key === 'Enter' && open());
-    const n = (ALBUMS[w.dataset.album]?.shots || []).length;
-    if (n > 1) { const b = document.createElement('span'); b.className = 'count'; b.textContent = `${n} صور`; w.appendChild(b); }
+  projs.forEach(p => {
+    p.querySelectorAll('.shot').forEach((f, i) => {
+      f.addEventListener('click', () => show(p, i));
+      f.addEventListener('keydown', e => e.key === 'Enter' && show(p, i));
+    });
+    p.querySelector('[data-open]').addEventListener('click', () => show(p, 0));
   });
 
   document.getElementById('lbx').onclick = hide;
