@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>صناع المشهد | روابطنا</title>
+<meta name="description" content="كل حسابات صناع المشهد في مكان واحد: واتساب، انستقرام، إكس، تيك توك، البريد والموقع.">
+<meta name="theme-color" content="#09203F">
+<link rel="icon" href="img/logo.png">
+<meta property="og:title" content="صناع المشهد | Scene Makers">
+<meta property="og:description" content="لنصنع كل مشهد — كل حساباتنا في مكان واحد.">
+<meta property="og:image" content="img/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#09203F; --navy-deep:#061530; --navy-soft:#0e2b52;
+  --gold:#BB9B15; --gold-light:#d9b93a; --orange:#B85B20;
+  --text:rgba(255,255,255,.86); --muted:rgba(255,255,255,.62); --line:rgba(255,255,255,.12);
+  --ar:'Tajawal',system-ui,sans-serif; --en:'Roboto','Tajawal',sans-serif;
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--ar);background:var(--navy-deep);color:var(--text);line-height:1.6;min-height:100vh;min-height:100dvh;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+
+/* خلفية: صورة الواجهة معتّمة + توهج برتقالي وذهبي كما في الموقع */
+.bg{position:fixed;inset:0;z-index:-1;overflow:hidden;background:var(--navy-deep)}
+.bg img{width:100%;height:100%;object-fit:cover;opacity:.16;filter:grayscale(.3);transform:scale(1.08);animation:drift 24s var(--ease) infinite alternate}
+.bg::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,21,48,.55),var(--navy-deep) 70%)}
+.bg::after{content:"";position:absolute;width:120vmax;height:120vmax;border-radius:50%;inset-inline-end:-60vmax;top:-70vmax;background:radial-gradient(circle,rgba(184,91,32,.32),transparent 60%)}
+.glow{position:absolute;width:90vmax;height:90vmax;border-radius:50%;inset-inline-start:-55vmax;bottom:-60vmax;background:radial-gradient(circle,rgba(187,155,21,.16),transparent 60%)}
+@keyframes drift{to{transform:scale(1.18) translateY(-2%)}}
+
+main{width:min(520px,100% - 32px);margin-inline:auto;padding:clamp(40px,8vh,72px) 0 40px;display:flex;flex-direction:column;align-items:center;text-align:center}
+
+/* الرأس */
+.top{position:fixed;top:14px;inset-inline:14px;display:flex;justify-content:space-between;pointer-events:none;z-index:5}
+.top button,.top a{pointer-events:auto;width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.07);border:1px solid var(--line);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);transition:background .25s,border-color .25s}
+.top button:hover,.top a:hover{background:rgba(187,155,21,.18);border-color:var(--gold)}
+.top svg{width:18px;height:18px;fill:none;stroke:#fff;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+
+.logo{width:min(200px,52vw);height:auto;filter:drop-shadow(0 18px 40px rgba(0,0,0,.45))}
+.kicker{display:inline-flex;align-items:center;gap:12px;font-family:var(--en);font-size:11.5px;letter-spacing:.32em;color:var(--gold-light);margin-top:22px;direction:ltr}
+.kicker::before,.kicker::after{content:"";width:26px;height:1px;background:var(--gold)}
+.tagline{font-size:clamp(17px,4.4vw,19px);color:var(--muted);margin-top:10px;max-width:34ch}
+.rule{height:3px;width:110px;background:linear-gradient(90deg,transparent,var(--orange),transparent);margin:22px auto 26px;border-radius:2px}
+
+/* أيقونات سريعة */
+.quick{display:flex;gap:12px;justify-content:center;margin-bottom:26px}
+.quick a{width:48px;height:48px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;background:rgba(255,255,255,.04);transition:background .3s,color .3s,border-color .3s,transform .3s var(--ease)}
+.quick a:hover{background:#fff;color:var(--navy-deep);border-color:#fff;transform:translateY(-3px)}
+.quick svg{width:19px;height:19px;fill:currentColor}
+
+/* قائمة الروابط */
+.links{list-style:none;width:100%;display:grid;gap:12px}
+.links a,.links button{position:relative;width:100%;display:flex;align-items:center;gap:14px;min-height:64px;padding:12px 14px 12px 18px;border-radius:16px;border:1px solid var(--line);background:rgba(14,43,82,.55);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);text-align:start;overflow:hidden;transition:border-color .3s,transform .35s var(--ease),background .3s}
+.links a::after,.links button::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(187,155,21,.12),transparent);transform:translateX(100%);transition:transform .7s var(--ease);pointer-events:none}
+.links a:hover,.links button:hover{border-color:var(--gold);transform:translateY(-2px);background:rgba(14,43,82,.8)}
+.links a:hover::after,.links button:hover::after{transform:translateX(-100%)}
+.links .ic{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:rgba(187,155,21,.12);border:1px solid rgba(187,155,21,.3);flex:none}
+.links .ic svg{width:20px;height:20px;fill:var(--gold-light)}
+.links .ic svg.s{fill:none;stroke:var(--gold-light);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.links .tx{flex:1;min-width:0;display:flex;flex-direction:column;line-height:1.3}
+.links .tx b{font-weight:700;font-size:16.5px;color:#fff}
+.links .tx small{font-family:var(--en);font-size:12px;letter-spacing:.08em;color:var(--muted);direction:ltr;text-align:right;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.links .go{width:18px;height:18px;flex:none;fill:none;stroke:rgba(255,255,255,.4);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:stroke .3s,transform .3s var(--ease)}
+.links a:hover .go,.links button:hover .go{stroke:var(--gold-light);transform:translateX(-3px)}
+
+/* الرابط المميز: واتساب */
+.links .feat{background:linear-gradient(135deg,var(--gold),#a1850f);border-color:var(--gold);color:var(--navy-deep)}
+.links .feat:hover{background:linear-gradient(135deg,var(--gold-light),var(--gold));border-color:var(--gold-light)}
+.links .feat .ic{background:rgba(6,21,48,.14);border-color:rgba(6,21,48,.2)}
+.links .feat .ic svg{fill:var(--navy-deep)}
+.links .feat .tx b{color:var(--navy-deep);font-weight:800}
+.links .feat .tx small{color:rgba(6,21,48,.7)}
+.links .feat .go,.links .feat:hover .go{stroke:var(--navy-deep)}
+.links .feat::after{background:linear-gradient(90deg,transparent,rgba(255,255,255,.3),transparent)}
+
+.sec{width:100%;display:flex;align-items:center;gap:12px;margin:22px 0 4px;font-family:var(--en);font-size:11px;letter-spacing:.28em;color:var(--gold)}
+.sec::before,.sec::after{content:"";flex:1;height:1px;background:var(--line)}
+
+footer{margin-top:34px;font-size:13px;color:var(--muted)}
+footer .en{font-family:var(--en);letter-spacing:.14em;font-size:11px;display:block;margin-top:4px;opacity:.75}
+
+/* إشعار النسخ */
+.toast{position:fixed;bottom:24px;left:50%;transform:translate(-50%,20px);background:#fff;color:var(--navy-deep);font-weight:700;font-size:14px;padding:10px 20px;border-radius:999px;opacity:0;pointer-events:none;transition:opacity .3s,transform .35s var(--ease);box-shadow:0 14px 40px rgba(0,0,0,.4)}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+
+/* دخول متدرج */
+.rv{opacity:0;transform:translateY(14px);animation:in .7s var(--ease) forwards;animation-delay:calc(var(--i,0) * 70ms + 80ms)}
+@keyframes in{to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.rv{animation:none;opacity:1;transform:none}.bg img{animation:none}}
+</style>
+</head>
+<body>
+
+<div class="bg" aria-hidden="true"><img src="img/hero-1200.jpg" alt=""><span class="glow"></span></div>
+
+<div class="top">
+  <a href="index.html" aria-label="الموقع الرئيسي"><svg viewBox="0 0 24 24"><path d="M3 11 12 4l9 7"/><path d="M5 10v10h14V10"/></svg></a>
+  <button id="share" aria-label="مشاركة الصفحة"><svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"/></svg></button>
+</div>
+
+<main>
+  <img class="logo rv" src="img/logo.png" alt="صناع المشهد — Scene Makers" width="900" height="685">
+  <span class="kicker rv" style="--i:1">LET'S MAKE EVERY SCENE</span>
+  <p class="tagline rv" style="--i:2">فريق إعلامي متخصص في التصوير والمونتاج والتصميم وكتابة المحتوى.</p>
+  <div class="rule rv" style="--i:3"></div>
+
+  <nav class="quick rv" style="--i:3" aria-label="حساباتنا">
+    <a href="https://instagram.com/scenemkr" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3zm5 3.5a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9m0 2a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5M17.5 5.5a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/></svg></a>
+    <a href="https://x.com/scenemkr" target="_blank" rel="noopener" aria-label="X"><svg viewBox="0 0 24 24"><path d="M18 2h3l-7.5 8.6L22 22h-6.8l-5.3-6.9L3.8 22H.8l8-9.2L.4 2h7l4.8 6.3zM16.9 20h1.9L7.1 3.9H5.1z"/></svg></a>
+    <a href="https://tiktok.com/@scenemkr" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M16 2c.3 2.3 1.7 3.9 4 4.1v3.2c-1.5 0-2.9-.5-4-1.3v6.5a5.5 5.5 0 1 1-5.5-5.5c.4 0 .7 0 1 .1v3.3a2.3 2.3 0 1 0 1.3 2.1V2z"/></svg></a>
+    <a href="https://wa.me/966511932556" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2m0 2a8 8 0 1 1-4.2 14.8l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 0 1 12 4M8.6 7.3c-.2 0-.5 0-.7.3-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.2 5 4.4 2.4 1 3 .8 3.5.7.5 0 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4l-.5-.3-1.9-.9c-.3-.1-.4-.1-.6.1l-.8 1c-.2.2-.3.2-.6.1-.3-.2-1.2-.4-2.3-1.4-.8-.8-1.4-1.7-1.6-2-.1-.3 0-.4.1-.6l.5-.5.3-.5v-.5L9.5 7.6c-.2-.3-.4-.3-.6-.3z"/></svg></a>
+  </nav>
+
+  <ul class="links">
+    <li class="rv" style="--i:4"><a class="feat" href="https://wa.me/966511932556?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%A8%D8%BA%D9%89%20%D8%A3%D8%B7%D9%84%D8%A8%20%D8%AE%D8%AF%D9%85%D8%A9%20%D9%85%D9%86%20%D8%B5%D9%86%D8%A7%D8%B9%20%D8%A7%D9%84%D9%85%D8%B4%D9%87%D8%AF" target="_blank" rel="noopener">
+      <span class="ic"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2m0 2a8 8 0 1 1-4.2 14.8l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 0 1 12 4M8.6 7.3c-.2 0-.5 0-.7.3-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.2 5 4.4 2.4 1 3 .8 3.5.7.5 0 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4l-.5-.3-1.9-.9c-.3-.1-.4-.1-.6.1l-.8 1c-.2.2-.3.2-.6.1-.3-.2-1.2-.4-2.3-1.4-.8-.8-1.4-1.7-1.6-2-.1-.3 0-.4.1-.6l.5-.5.3-.5v-.5L9.5 7.6c-.2-.3-.4-.3-.6-.3z"/></svg></span>
+      <span class="tx"><b>اطلب خدمتك عبر واتساب</b><small>+966 51 193 2556</small></span>
+      <svg class="go" viewBox="0 0 24 24"><path d="m15 6-6 6 6 6"/></svg>
+    </a></li>
+
+    <li class="rv" style="--i:5"><a href="index.html#works">
+      <span class="ic"><svg class="s" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m10 9 5 3-5 3z"/></svg></span>
+      <span class="tx"><b>شاهد أعمالنا</b><small>PORTFOLIO</small></span>
+      <svg class="go" viewBox="0 0 24 24"><path d="m15 6-6 6 6 6"/></svg>
+    </a></li>
+
+    <li class="rv" style="--i:6"><a href="index.html">
+      <span class="ic"><svg class="s" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></span>
+      <span class="tx"><b>الموقع الرسمي</b><small>SCENE MAKERS</small></span>
+      <svg class="go" viewBox="0 0 24 24"><path d="m15 6-6 6 6 6"/></svg>
+    </a></li>
+
+    <li class="sec rv" style="--i:7" aria-hidden="true">FOLLOW US</li>
+
+    <li class="rv" style="--i:8"><a href="https://instagram.com/scenemkr" target="_blank" rel="noopener">
+      <span class="ic"><svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3zm5 3.5a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9m0 2a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5M17.5 5.5a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/></svg></span>
+      <span class="tx"><b>انستقرام</b><small>@scenemkr</small></span>
+      <svg class="go" viewBox="0 0 24 24"><path d="m15 6-6 6 6 6"/></svg>
+    </a></li>
+
+    <li class="rv" style="--i:9"><a href="https://tiktok.com/@scenemkr" target="_blank" rel="noopener">
+      <span class="ic"><svg viewBox="0 0 24 24"><path d="M16 2c.3 2.3 1.7 3.9 4 4.1v3.2c-1.5 0-2.9-.5-4-1.3v6.5a5.5 5.5 0 1 1-5.5-5.5c.4 0 .7 0 1 .1v3.3a2.3 2.3 0 1 0 1.3 2.1V2z"/></svg></span>
+      <span class="tx"><b>تيك توك</b><small>@scenemkr</small></span>
+      <svg class="go" viewBox="0 0 24 24"><path d="m15 6-6 6 6 6"/></svg>
+    </a></li>
+
+    <li class="rv" style="--i:10"><a href="https://x.com/scenemkr" target="_blank" rel="noopener">
+      <span class="ic"><svg viewBox="0 0 24 24"><path d="M18 2h3l-7.5 8.6L22 22h-6.8l-5.3-6.9L3.8 22H.8l8-9.2L.4 2h7l4.8 6.3zM16.9 20h1.9L7.1 3.9H5.1z"/></svg></span>
+      <span class="tx"><b>إكس</b><small>@scenemkr</small></span>
+      <svg class="go" viewBox="0 0 24 24"><path d="m15 6-6 6 6 6"/></svg>
+    </a></li>
+
+    <li class="sec rv" style="--i:11" aria-hidden="true">CONTACT</li>
+
+    <li class="rv" style="--i:12"><a href="mailto:scenemkr@gmail.com">
+      <span class="ic"><svg class="s" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>
+      <span class="tx"><b>البريد الإلكتروني</b><small>scenemkr@gmail.com</small></span>
+      <svg class="go" viewBox="0 0 24 24"><path d="m15 6-6 6 6 6"/></svg>
+    </a></li>
+
+    <li class="rv" style="--i:13"><a href="tel:+966511932556">
+      <span class="ic"><svg class="s" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></span>
+      <span class="tx"><b>اتصل بنا</b><small>+966 51 193 2556</small></span>
+      <svg class="go" viewBox="0 0 24 24"><path d="m15 6-6 6 6 6"/></svg>
+    </a></li>
+
+    <li class="rv" style="--i:14"><button type="button" id="vcard">
+      <span class="ic"><svg class="s" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="11" r="2.5"/><path d="M5.5 17a3.5 3.5 0 0 1 7 0M15 9h3M15 13h3"/></svg></span>
+      <span class="tx"><b>احفظ جهة الاتصال</b><small>SAVE CONTACT</small></span>
+      <svg class="go" viewBox="0 0 24 24"><path d="M12 5v12M6 12l6 6 6-6"/></svg>
+    </button></li>
+  </ul>
+
+  <footer class="rv" style="--i:15">© 2026 صناع المشهد — لنصنع كل مشهد<span class="en">SCENE MAKERS</span></footer>
+</main>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+  var toast=document.getElementById('toast'),t;
+  function say(m){toast.textContent=m;toast.classList.add('on');clearTimeout(t);t=setTimeout(function(){toast.classList.remove('on')},2200)}
+
+  // مشاركة الصفحة
+  document.getElementById('share').addEventListener('click',function(){
+    var data={title:'صناع المشهد | Scene Makers',text:'كل حسابات صناع المشهد في مكان واحد',url:location.href};
+    if(navigator.share){navigator.share(data).catch(function(){});return}
+    if(navigator.clipboard){navigator.clipboard.writeText(location.href).then(function(){say('تم نسخ الرابط')},function(){say(location.href)})}
+    else say(location.href);
+  });
+
+  // حفظ جهة الاتصال (vCard)
+  document.getElementById('vcard').addEventListener('click',function(){
+    var site=new URL('index.html',location.href).href;
+    var v=['BEGIN:VCARD','VERSION:3.0','N:;صناع المشهد;;;','FN:صناع المشهد - Scene Makers','ORG:Scene Makers',
+      'TEL;TYPE=CELL:+966511932556','EMAIL:scenemkr@gmail.com','URL:'+site,
+      'X-SOCIALPROFILE;TYPE=instagram:https://instagram.com/scenemkr',
+      'X-SOCIALPROFILE;TYPE=twitter:https://x.com/scenemkr',
+      'X-SOCIALPROFILE;TYPE=tiktok:https://tiktok.com/@scenemkr','END:VCARD'].join('\r\n');
+    var a=document.createElement('a');
+    a.href=URL.createObjectURL(new Blob([v],{type:'text/vcard;charset=utf-8'}));
+    a.download='scene-makers.vcf';document.body.appendChild(a);a.click();
+    setTimeout(function(){URL.revokeObjectURL(a.href);a.remove()},500);
+    say('تم تجهيز جهة الاتصال');
+  });
+})();
+</script>
+</body>
+</html>
